@@ -1,0 +1,2 @@
+[13-Aug-2021 08:38:49 UTC] PHP Fatal error:  Cannot redeclare App\Http\Controllers\PermintaanBarangController::tolak() in /home4/pakaiman/public_html/sys_int/persediaan/app/Http/Controllers/PermintaanBarangController.php on line 180
+[19-Nov-2021 05:56:31 UTC] PHP Fatal error:  Cannot use Auth as Auth because the name is already in use in /home4/pakaiman/public_html/sys_int/persediaan/app/Http/Controllers/ChangePasswordController.php on line 11
