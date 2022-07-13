@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use DataTables;
 
-class DaftarBarangController extends Controller
+class TableLayout2Controller extends Controller
 {
     public function index(){
         $tb_jenis=DB::table("tb_jenis")
@@ -19,7 +19,7 @@ class DaftarBarangController extends Controller
         ->select("kode","keterangan")
         ->get();
         
-        return view("inventory/daftar_barang/index", compact("tb_jenis","tb_kategori","satuan"));
+        return view("crud/table_layout2/index", compact("tb_jenis","tb_kategori","satuan"));
     }
 
     public function show_data(){
@@ -28,7 +28,7 @@ class DaftarBarangController extends Controller
         ->leftjoin("tb_jenis", "tb_daftar_barang.kode_jenis","=","tb_jenis.kode")
         ->leftJoin("tb_kategori", "tb_daftar_barang.kode_kategori","=","tb_kategori.kode")
         ->leftjoin("tb_ref_satuan","tb_daftar_barang.id_satuan","=","tb_ref_satuan.id")
-        ->orderBy("tb_daftar_barang.stock","DESC")
+        ->orderBy("tb_daftar_barang.updated_at","DESC")
         ->get();
 
         return DataTables::of($table)->make(true);
@@ -45,12 +45,13 @@ class DaftarBarangController extends Controller
             $ketemu=false;
             DB::table("tb_daftar_barang")
             ->insert([
-            "kode_jenis"    =>$request["kode_jenis"],
-            "kode_kategori" =>$request["kode_kategori"],
-            "kode_barang"   =>$request["kode_barang"],
-            "nama_barang"   =>$request["nama_barang"],
-            "stock"         =>0
-        ]); 
+                "kode_jenis"    =>$request["kode_jenis"],
+                "kode_kategori" =>$request["kode_kategori"],
+                "kode_barang"   =>$request["kode_barang"],
+                "nama_barang"   =>$request["nama_barang"],
+                "id_satuan"     =>$request["satuan_barang"],
+                "stock"         =>0,
+            ]); 
 
         }
 
@@ -145,4 +146,6 @@ class DaftarBarangController extends Controller
     public function test(){
         return view("test");
     }
+
+    
 }

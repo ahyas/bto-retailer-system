@@ -140,7 +140,7 @@ $(document).ready(function(){
             {data:"id_barang",
                 mRender: function(data, type, full)
                 {
-                    return'<button data-kode_jenis='+full["kode_jenis"]+' data-id_barang='+data+' class="btn btn-sm edit" id="bto-button">Edit</button> <button  data-id_barang='+data+' class="btn btn-sm delete" id="bto-button">Delete</button>';
+                    return'<div class="dropdown"><button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">Dropdown button</button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#">Another action</a><a class="dropdown-item" href="#">Something else here</a></div></div>';
                 }
             }
         ]
