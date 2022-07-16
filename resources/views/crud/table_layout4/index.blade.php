@@ -381,7 +381,7 @@ $(document).ready(function(){
         setTimeout(function(){
             $("#alertOK").modal("show");
             document.getElementById("alertMsg").innerHTML = msg;
-        },500);
+        },1000);
     }
 
 });

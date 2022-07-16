@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
+    <link rel = "icon" href ="{{asset('public/logo/image.png')}}" type = "image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('public/style/layout.css')}}">
     <style type="text/css">
@@ -14,15 +15,14 @@
 <body>
 
 <div class="wrapper">
-
     <div class="login-form">
         <div style="margin-left:30px; margin-top:25px;">
             
             <img src="{{asset('public/logo/image.png')}}" style="width:120px; display: block; float:left; margin-right:25px;"/>
 
             <div style="color:white">
-                <div style="font-size:35px; font-weight:bold">BtO CRUD Panel</div>
-                <p style="font-size:20px; font-weight:bold; line-height:25px">Ready to use general purpose CRUD system </p>
+                <div style="font-size:35px; font-weight:bold; line-height:40px">Back to Office<br> CRUD Panel</div>
+                <p style="font-size:18px; line-height:25px">General purpose CRUD admin panel system </p>
             </div>
         </div>
                 <form action="{{ route('login') }}" method="post">
@@ -59,15 +59,15 @@
                         <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-block" style="background-color:orange">Log In</button>
+                    <button type="submit" class="btn btn-sm btn-block" id="bto-button" style="height:35px; font-weight:normal">Log In</button>
                 
                 </form>
             </div>
      
 </div>
 
-            <div class="footer">
-                <p>Copyright &copy; Back to Office CRUD Panel. All rights reserved.</p>
-            </div>
+<div class="footer">
+    <p>Copyright &copy; Back to Office CRUD Panel. All rights reserved.</p>
+</div>
 </body>
 </html>

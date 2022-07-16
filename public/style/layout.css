@@ -39,6 +39,7 @@ body {
 
     #card{
         border:1px solid #9bbbe3; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        margin-top:15px;
     }
 
     #card-header{
@@ -100,9 +101,26 @@ body {
         height:25px;
         padding-top:auto;
         padding-bottom: auto;
-        line-height:0;;
+        line-height:0;
+        border-radius: 5px;
         min-width:65px;
         border:1px solid #969696;
+    }
+
+    #bto-button:hover, .modal-footer button:hover{
+        background: linear-gradient(to top, #fce8aa 10%, #f3ce61 40%, #ffe88e 60%,#fef7d5 100%);
+    }
+
+    td.details-control {
+        background: url("../icon/pluss.png") no-repeat center center;
+        cursor: pointer;
+    }
+    tr.shown td.details-control {
+        background: url("../icon/minuss.jpg") no-repeat center center;
+    }
+    div.slider {
+        display: none;
+
     }
 
     /* End table section */
@@ -110,15 +128,16 @@ body {
     /* Start login section */
 
     .form-control {
-        box-shadow: none !important;
+        
         border: transparent;
     }
 
     .form-control, .btn {        
         border-radius: 2px;
     }
+
     .login-form {
-        border: 2px solid #e8c248;
+        border: 2px solid white;
         border-radius: 25px;
         background-image: linear-gradient(#557cb1, #557cb1);
         left:50%;
@@ -127,6 +146,7 @@ body {
         top: 25%;
         -ms-transform: translateX(-50%);
         transform: translateX(-50%);
+        border:2px solid #9bbbe3; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
     
     .login-form form {

@@ -40,10 +40,10 @@
                         <li class="nav-item">
                             <a class="nav-link master-menu tab1" href="#"> Standard CRUD tables <i class="bi small bi-caret-down-fill"></i> </a>
                             <ul id="submenu1" class="submenu collapse">
-                                <li><a id="sub-tab1" class="sub-link sub-tab1" href="{{route('crud.table_layout1')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Basic layout</a></li>
-                                <li><a id="sub-tab2" class="sub-link sub-tab2" href="{{route('crud.table_layout2')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Grouped action button</a></li>
-                                <li><a id="sub-tab3" class="sub-link sub-tab3" href="{{route('crud.table_layout3')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Selected row</a> </li>
-                                <li><a id="sub-tab4" class="sub-link sub-tab4" href="{{route('crud.table_layout4')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Integrated outside form</a> </li>
+                                <li><a class="sub-link" href="{{route('crud.table_layout1')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Basic layout</a></li>
+                                <li><a class="sub-link" href="{{route('crud.table_layout2')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Grouped action button</a></li>
+                                <li><a class="sub-link" href="{{route('crud.table_layout3')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Selected row</a> </li>
+                                <li><a class="sub-link" href="{{route('crud.table_layout4')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Integrated outside form</a> </li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -59,7 +59,7 @@
             <!-- Page content wrapper-->
             <div id="page-content-wrapper">
                 <!-- Top navigation-->
-                <nav class="navbar sticky-top navbar-expand-md">
+                <nav class="navbar navbar-expand-md">
                     <div class="container-fluid">
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -99,7 +99,7 @@
                     </div>
                 </nav>
                 <!-- Page content-->
-                <main class="py-4">
+                
                 @yield('content')
         
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
