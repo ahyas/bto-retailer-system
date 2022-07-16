@@ -20,9 +20,6 @@
         <!--Icon library-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <!--Date picker style-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.standalone.min.css">
-
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
         <link rel="stylesheet" href="{{asset('public/style/layout.css')}}">
@@ -30,41 +27,29 @@
         <link rel="stylesheet" href="{{asset('public/style/modal.css')}}">
 
         <link href="{{asset('public/style/sidebar.css')}}" rel="stylesheet" />
-
+        
     </head>
     <body>
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading"><a href="{{route('home')}}"><img class="d-inline-block align-top" src="{{asset('public/logo/image.png')}}" width="20" height="20" alt="">&nbsp;&nbsp; BTO CRUD Panel</a></div>
+                <div class="sidebar-heading"><a href="{{route('home')}}"><img class="d-inline-block align-top" src="{{asset('public/logo/image.png')}}" width="20" height="20" alt="">&nbsp;BtO CRUD Panel</a></div>
                 <div class="list-group list-group-flush">
                 <nav class="sidebar">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link master-menu" href="#"> Standard CRUD operation <i class="bi small bi-caret-down-fill"></i> </a>
-                            <ul class="submenu collapse">
-                                <li><a class="nav-link" href="{{route('crud.table_layout1')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Basic layout</a></li>
-                                <li><a class="nav-link" href="{{route('crud.table_layout2')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Grouped action button</a></li>
-                                <li><a class="nav-link" href="{{route('crud.table_layout3')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Selected row</a> </li>
-                                <li><a class="nav-link" href="{{route('crud.table_layout4')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Integrated outside form</a> </li>
+                            <a class="nav-link master-menu tab1" href="#"> Standard CRUD tables <i class="bi small bi-caret-down-fill"></i> </a>
+                            <ul id="submenu1" class="submenu collapse">
+                                <li><a id="sub-tab1" class="sub-link sub-tab1" href="{{route('crud.table_layout1')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Basic layout</a></li>
+                                <li><a id="sub-tab2" class="sub-link sub-tab2" href="{{route('crud.table_layout2')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Grouped action button</a></li>
+                                <li><a id="sub-tab3" class="sub-link sub-tab3" href="{{route('crud.table_layout3')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Selected row</a> </li>
+                                <li><a id="sub-tab4" class="sub-link sub-tab4" href="{{route('crud.table_layout4')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Integrated outside form</a> </li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link master-menu" href="#"> More menus <i class="bi small bi-caret-down-fill"></i> </a>
-                            <ul class="submenu collapse">
-                                <li><a class="nav-link" href="#">Submenu item 4 </a></li>
-                                <li><a class="nav-link" href="#">Submenu item 5 </a></li>
-                                <li><a class="nav-link" href="#">Submenu item 6 </a></li>
-                                <li><a class="nav-link" href="#">Submenu item 7 </a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link master-menu" href="#"> Another submenus <i class="bi small bi-caret-down-fill"></i> </a>
-                            <ul class="submenu collapse">
-                                <li><a class="nav-link" href="#">Submenu item 8 </a></li>
-                                <li><a class="nav-link" href="#">Submenu item 9 </a></li>
-                                <li><a class="nav-link" href="#">Submenu item 10 </a></li>
-                                <li><a class="nav-link" href="#">Submenu item 11 </a></li>
+                            <a class="nav-link master-menu tab2" href="#"> Custom CRUD tables<i class="bi small bi-caret-down-fill"></i> </a>
+                            <ul id="submenu2" class="submenu collapse">
+                                <li><a class="sub-link" href="{{route('crud.table_layout5')}}"><img src="{{asset('public/icon/icon-table2.png')}}" style="width:20px;"> Child rows</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -74,9 +59,8 @@
             <!-- Page content wrapper-->
             <div id="page-content-wrapper">
                 <!-- Top navigation-->
-                <nav class="navbar sticky-top navbar-expand-md" style="background-image: linear-gradient(#c7d9ed, #b4c7e7, #c7d9ed); border-bottom: 1px solid #577fb3; padding-top:0.45rem; padding-bottom:0.45rem;">
+                <nav class="navbar sticky-top navbar-expand-md">
                     <div class="container-fluid">
-                        <!--<button class="btn btn-primary" id="sidebarToggle"><img src="{{asset('public/icon/toggle-button.png')}}" /></button>-->
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
@@ -95,7 +79,7 @@
                                     @endif
                                 @else
                                     <li class="nav-item dropdown">
-                                        <a style="color:#0a4293; font-size:14px; font-weight:600;" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             {{ Auth::user()->name }} <span class="caret"></span>
                                         </a>
 

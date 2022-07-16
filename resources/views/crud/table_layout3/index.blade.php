@@ -11,30 +11,29 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="col-md-12 mt-5">
-            <div class="card" id="card">
-                <div class="card-header" id="card-header">
-                    <span id="header-title">Selected row</span>
-                </div>
-                <div class="card-body" id="card-body">
-                <button class="btn btn-sm add" id="bto-button">Add</button> <button class="btn btn-sm edit" id="bto-button">Edit</button> <button class="btn btn-sm delete" id="bto-button">Delete</button> <input type="hidden" id="id_item2"/> <input type="hidden" id="category2"/>
-                <br>
-                <br>
-                    <table class="tb_warehouse cell-border table-sm" id="selected_row">
-                        <thead>
-                            <tr>
-                                <td>Barcode</td>
-                                <td>Category</td>
-                                <td width="120px">Sub category</td>
-                                <td width="250px">Name</td>
-                                <td>Stock</td>
-                                <td>Unit</td>
-                            </tr>
-                        </thead>
-                            <tbody></tbody>
-                    </table>
-                </div>
+    <div class="col-md-12">
+        <div class="card" id="card">
+            <div class="card-header" id="card-header">
+                <span id="header-title">Selected row</span>
+            </div>
+            <div class="card-body" id="card-body">
+            <button class="btn btn-sm add" id="bto-button">Add</button> <button class="btn btn-sm edit" id="bto-button">Edit</button> <button class="btn btn-sm delete" id="bto-button">Delete</button> <input type="hidden" id="id_item2"/> <input type="hidden" id="category2"/>
+            <br>
+            <br>
+                <table class="tb_warehouse cell-border table-sm" id="selected_row">
+                    <thead>
+                        <tr>
+                            <td><i class="bi small bi-caret-down-fill" style="color:white"></i></td>
+                            <td>Barcode</td>
+                            <td>Item</td>
+                            <td>Category</td>
+                            <td>Sub category</td>
+                            <td>Stock</td>
+                            <td>Unit</td>
+                        </tr>
+                    </thead>
+                        <tbody></tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -56,6 +55,13 @@
                             <input type="text" class="form-control form-control-sm barcode" id="barcode" name="barcode" >
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label style="padding-top: 0" class="col-sm-6 control-label">Item </label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control form-control-sm item" id="item" name="item" >
+                        </div>
+                    </div>
                     
                     <div class="form-group">
                         <label style="padding-top: 0" class="col-sm-6 control-label">Category</label>
@@ -75,13 +81,6 @@
                             <select class="form-control form-control-sm sub_category" id="sub_category" name="sub_category" disabled="true">
                                     <option value="0">-- Choose sub category --</option>
                             </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label style="padding-top: 0" class="col-sm-6 control-label">Name </label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control form-control-sm item" id="item" name="item" >
                         </div>
                     </div>
 
@@ -114,57 +113,9 @@
     </div>
 </div>
 
-<div class="modal fade" id="alertOK" aria-hidden="true" data-backdrop="false">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-info text-white">
-                <p id="alertHeading">Notification</p><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-                <p><img src="{{asset('public/logo/checked.png')}}" />&nbsp; Data has successfuly changed!</p>
-                <div class="modal-footer">
-                    <button class="btn btn-sm" data-dismiss="modal">OK</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="alertSuccess" aria-hidden="true" data-backdrop="false">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-info text-white">
-                <p id="alertHeading">Notification</p><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-                <p><img src="{{asset('public/logo/checked-blue.png')}}" />&nbsp; Data has successfuly added!</p>
-                <div class="modal-footer">
-                    <button class="btn btn-sm" data-dismiss="modal">OK</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="alertConfirm" aria-hidden="true" data-backdrop="false">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-info text-white">
-                <p id="alertHeading">Notification</p><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-                <p><img src="{{asset('public/logo/confirm.png')}}" />&nbsp; Data has successfuly changed!</p>
-                <div class="modal-footer">
-                    <button class="btn btn-sm" data-dismiss="modal">OK</button>
-                    <button class="btn btn-sm" data-dismiss="modal">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 </body>
 </html>
+@include('crud/notification/index')
 @endsection
 
 @push('scripts')
@@ -182,17 +133,40 @@ $(document).ready(function(){
         bResetDisplay   : false,
         select          : true,
         bPaginate       : true,
+        columnDefs: [
+            {
+                searchable: false,
+                orderable: false,
+                targets: 0,
+            },
+        ],
         serverSide      : false,
         columns         :
         [
-            {data:"barcode"},
+            {
+
+                "width" :"5px",
+                "className":      'numbering',
+                "orderable":      false,
+                "data":           1,
+                "defaultContent": ''
+            },
+            {data:"barcode", width:"100px"},
+            {data:"item"},
             {data:"jenis_barang"},
             {data:"kategori_barang"},
-            {data:"item"},
-            {data:"stock"},
+            {data:"stock", width:"40px", className:"dt-body-right"},
             {data:"unit"}
         ]
     });
+
+    tb_warehouse.on('order.dt search.dt', function () {
+        let i = 1;
+ 
+        tb_warehouse.cells(null, 0, { search: 'applied', order: 'applied' }).every(function (cell) {
+            this.data(i++);
+        });
+    }).draw();
 
     var button_edit = document.querySelector('.edit');
     var button_delete = document.querySelector('.delete');
@@ -253,6 +227,7 @@ $(document).ready(function(){
                    
                     $(".tb_warehouse").DataTable().ajax.reload();
                     disabledButton(true);
+                    popupMsg("Data successfuly deleted!");
                 }
             });
         }
@@ -266,6 +241,7 @@ $(document).ready(function(){
         $("#myform").trigger("reset");
         $("#sub_category").val("0");
         $("#formItemList").modal("show");
+        $("#barcode").focus();
     });
 
     $("#saveBtn").click(function(e){
@@ -285,7 +261,7 @@ $(document).ready(function(){
                     $(".tb_warehouse").DataTable().ajax.reload();
                     $("#formItemList").modal("hide");
                     disabledButton(true);
-                    $("#alertSuccess").modal("show");
+                    popupMsg("Data successfuly added!");
                 }
             }
         });
@@ -322,6 +298,7 @@ $(document).ready(function(){
                 $("#stock").val(data.table.stock);
                 $("#unit").val(data.table.id_unit);
                 $("#formItemList").modal("show");
+                $("#barcode").focus();
             }
         });
     });
@@ -337,11 +314,18 @@ $(document).ready(function(){
                 $(".tb_warehouse").DataTable().ajax.reload(null, false);
                 $("#formItemList").modal("hide");
                 disabledButton(true);
-                $("#alertOK").modal("show");
+                popupMsg("Data successfuly updated!");
             }
         });
         
     });
+
+    function popupMsg(msg){
+        setTimeout(function(){
+            $("#alertOK").modal("show");
+            document.getElementById("alertMsg").innerHTML = msg;
+        },500);
+    }
 
 });
 </script>

@@ -8,38 +8,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daftar Barang Persediaan</title>
+    <style>
+        td.details-control {
+            background: url("{{asset('public/icon/pluss.png')}}") no-repeat center center;
+            cursor: pointer;
+        }
+        tr.shown td.details-control {
+            background: url("{{asset('public/icon/minuss.jpg')}}") no-repeat center center;
+        }
+        div.slider {
+            display: none;
+
+        }
+    </style>
 </head>
 
 <body>
-   
-    <div class="col-md-12">
-        <div class="card" id="card">
-            <div class="card-header" id="card-header">
-                <span id="header-title">Grouped action button</span>
-            </div>
-            <div class="card-body" id="card-body">
-            <button class="btn btn-sm add" id="bto-button">Add</button>
-            <br>
-            <br>
-                <table class="tb_warehouse cell-border table-sm">
-                    <thead>
-                        <tr>
-                            <td><i class="bi small bi-caret-down-fill" style="color:white"></i></td>
-                            <td>Barcode</td>
-                            <td>Item</td>
-                            <td>Category</td>
-                            <td>Sub category</td>
-                            <td>Stock</td>
-                            <td>Unit</td>
-                            <td>Actions</td>
-                        </tr>
-                    </thead>
-                        <tbody></tbody>
-                </table>
+        <div class="col-md-12">
+            <div class="card" id="card">
+                <div class="card-header" id="card-header">
+                    <span id="header-title">Child rows</span>
+                </div>
+                <div class="card-body" id="card-body">
+                <button class="btn btn-sm add" id="bto-button">Add</button>
+                <br>
+                <br>
+                    <table class="tb_warehouse cell-border table-sm">
+                        <thead>
+                            <tr>
+                                <td><i class="bi small bi-caret-down-fill" style="color:white"></i></td>
+                                <th></th>
+                                <td>Item</td>
+                                <td>Barcode</td>
+                                <td>Category</td>
+                                <td></td>
+                                <td>Sub category</td>
+                                <td>Stock</td>
+                                <td>Unit</td>
+                            </tr>
+                        </thead>
+                            <tbody></tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-    
 
     <div class="modal fade" id="formItemList" aria-hidden="true" data-backdrop="false">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -56,13 +68,6 @@
                         <label style="padding-top: 0" class="col-sm-6 control-label">Barcode</label>
                         <div class="col-sm-10" >
                             <input type="text" class="form-control form-control-sm barcode" id="barcode" name="barcode" >
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label style="padding-top: 0" class="col-sm-6 control-label">Item </label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control form-control-sm item" id="item" name="item" >
                         </div>
                     </div>
                     
@@ -84,6 +89,13 @@
                             <select class="form-control form-control-sm sub_category" id="sub_category" name="sub_category" disabled="true">
                                     <option value="0">-- Choose sub category --</option>
                             </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="padding-top: 0" class="col-sm-6 control-label">Name </label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control form-control-sm item" id="item" name="item" >
                         </div>
                     </div>
 
@@ -118,6 +130,7 @@
 
 </body>
 </html>
+
 @include('crud/notification/index')
 @endsection
 
@@ -145,6 +158,7 @@ $(document).ready(function(){
         serverSide      : false,
         columns         :
         [
+            
             {
                 "width" :"5px",
                 "className":      'numbering',
@@ -152,18 +166,21 @@ $(document).ready(function(){
                 "data":           1,
                 "defaultContent": ''
             },
+            {
+                "width" :"5px",
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           null,
+                "defaultContent": ''
+            },
             {data:"barcode", width:"100px"},
             {data:"item"},
-            {data:"jenis_barang"},
-            {data:"kategori_barang"},
-            {data:"stock", width:"40px", className:"dt-body-right"},
-            {data:"unit"},
-            {data:"id_item",
-                mRender: function(data, type, full)
-                {
-                    return'<div class="dropdown"><button class="btn btn-sm dropdown-toggle" type="button" id="bto-button" data-toggle="dropdown" aria-expanded="false">More</button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton"><a data-category='+full["category"]+' data-id_item='+data+' class="dropdown-item edit">Edit</a><a data-id_item='+data+' class="dropdown-item delete">Delete</button></div></div>';
-                }
-            }
+            {data:"jenis_barang", visible:false},
+            {data:"category", visible:false},
+            {data:"kategori_barang", visible:false},
+            {data:"stock", className:"dt-body-right"},
+            {data:"unit", visible:false},
+            {data:"id_item",visible:false}
         ]
     });
 
@@ -174,6 +191,51 @@ $(document).ready(function(){
             this.data(i++);
         });
     }).draw();
+
+    function format(d) {
+
+        return (
+            '<div class="slider"><table border="0">' +
+                '<tr>' +
+                    '<td><b>Category</b></td>' +
+                    '<td>'+d.jenis_barang +'</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><b>Sub category</b></td>' +
+                    '<td>'+d.kategori_barang+'</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><b>Unit</b></td>' +
+                    '<td>'+d.unit+'</td>' +
+                '</tr>' +
+            '</table>' +
+            '<div class="modal-footer"><button data-category='+d.category+' data-id_item='+d.id_item+' class="btn btn-sm edit" id="bto-button">Edit</button> <button data-id_item='+d.id_item+' class="btn btn-sm delete" id="bto-button">Delete</button></div>'
+        );
+        
+    }
+
+    // Add event listener for opening and closing details
+    $('.tb_warehouse tbody').on('click', 'td.details-control', function () {
+        
+        var tr = $(this).closest('tr');
+        var row = table.row( tr );
+ 
+        if ( row.child.isShown() ) {
+            
+            $('div.slider', row.child()).slideUp( function () {
+                row.child.hide();
+                tr.removeClass('shown');
+            } );
+        }
+        else {
+            // Open this row
+            row.child( format(row.data()), 'no-padding' ).show();
+            tr.addClass('shown');
+ 
+            $('div.slider', row.child()).slideDown();
+            
+        }
+    });
 
     $("body").on("change", "#category", function(){
         console.log($(this).val());
@@ -233,7 +295,7 @@ $(document).ready(function(){
             success :function(data){
                 console.log(data.exist);
                 if(data.exist==true){
-                    alert("Barcode has already inserted. Input another.");
+                    alert("Barcode has already exist. Input another.");
                     $("#barcode").focus();
                 }else{
                     $(".tb_warehouse").DataTable().ajax.reload();
@@ -251,7 +313,6 @@ $(document).ready(function(){
         document.getElementById("updateBtn").style.display = "inline-block";
         var id_item = $(this).data("id_item");
         var category=$(this).data("category");
-
         $.ajax({
             type    : "GET",
             url     : "table_layout1/"+id_item+"/edit",

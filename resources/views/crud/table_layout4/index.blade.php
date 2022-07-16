@@ -11,8 +11,8 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="col-md-12 mt-5">
+    
+        <div class="col-md-12">
             <div class="card" id="card">
                 <div class="card-header" id="card-header">
                     <span id="header-title">Integrated outside form</span>
@@ -53,7 +53,7 @@
 
                     <div class="form-group row">
                         <div class="col-sm-8" >
-                            <label for="item">Name </label>
+                            <label for="item">Item </label>
                             <input type="text" class="form-control form-control-sm item" id="item" name="item" readonly>
                         </div>
                     </div>
@@ -76,23 +76,24 @@
                     </div>
                 </form>
                
-                    <div class="modal-footer">
-                        <button class="btn btn-sm saveBtn" id="saveBtn">Save</button>
-                        <button class="btn btn-sm updateBtn" id="updateBtn">Update</button>
-                        <button type="button" class="btn btn-sm cancelBtn" id="cancelBtn" data-dismiss="modal">Cancel</button>
-                    </div>
+                <div class="modal-footer">
+                    <button class="btn btn-sm saveBtn" id="saveBtn">Save</button>
+                    <button class="btn btn-sm updateBtn" id="updateBtn">Update</button>
+                    <button type="button" class="btn btn-sm cancelBtn" id="cancelBtn" data-dismiss="modal">Cancel</button>
+                </div>
 
                 <br>
-                    <table class="tb_warehouse cell-border table-sm" id="selected_row">
+                    <table class="tb_warehouse cell-border table-sm" id="selected_row" width="100%">
                         <thead>
                             <tr>
+                                <td><i class="bi small bi-caret-down-fill" style="color:white"></i></td>
                                 <td>Barcode</td>
+                                <td>Item</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td>Category</td>
-                                <td width="120px">Sub category</td>
-                                <td width="250px">Name</td>
+                                <td>Sub category</td>
                                 <td>Stock</td>
                                 <td>Unit</td>
                             </tr>
@@ -102,26 +103,9 @@
                 </div>
             </div>
         </div>
-    </div>
-
-<div class="modal fade" id="alertOK" aria-hidden="true" data-backdrop="false">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-info text-white">
-                <p id="alertHeading">Notification</p><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-                <p><img src="{{asset('public/logo/checked.png')}}" />&nbsp; <span id="alertMsg"></span></p>
-                <div class="modal-footer">
-                    <button class="btn btn-sm" data-dismiss="modal">OK</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 </body>
 </html>
+@include('crud/notification/index')
 @endsection
 
 @push('scripts')
@@ -139,20 +123,42 @@ $(document).ready(function(){
         bResetDisplay   : false,
         select          : true,
         bPaginate       : true,
+        columnDefs: [
+            {
+                searchable: false,
+                orderable: false,
+                targets: 0,
+            },
+        ],
         serverSide      : false,
         columns         :
         [
-            {data:"barcode"},
+            {
+                "width" :"5px",
+                "className":      'numbering',
+                "orderable":      false,
+                "data":           1,
+                "defaultContent": ''
+            },
+            {data:"barcode", width:"100px"},
+            {data:"item"},
             {data:"id_unit", visible:false},
             {data:"category", visible:false},
             {data:"sub_category", visible:false},
             {data:"jenis_barang"},
             {data:"kategori_barang"},
-            {data:"item"},
-            {data:"stock"},
+            {data:"stock", width:"40px", className:"dt-body-right"},
             {data:"unit"}
         ]
     });
+
+    tb_warehouse.on('order.dt search.dt', function () {
+        let i = 1;
+ 
+        tb_warehouse.cells(null, 0, { search: 'applied', order: 'applied' }).every(function (cell) {
+            this.data(i++);
+        });
+    }).draw();
 
     var button_add = document.querySelector('.add');
     var button_edit = document.querySelector('.edit');
@@ -177,6 +183,11 @@ $(document).ready(function(){
             button_update.disabled = true;
             button_cancel.disabled = false;
         }else if(value2="cancel"){
+            button_add.disabled = false;
+            button_save.disabled = true;
+            button_update.disabled = true;
+            button_cancel.disabled = true;
+        }else if(value2="delete"){
             button_add.disabled = false;
             button_save.disabled = true;
             button_update.disabled = true;
@@ -300,7 +311,9 @@ $(document).ready(function(){
                 success : function(data){
                     $("#myform").trigger("reset");
                     $(".tb_warehouse").DataTable().ajax.reload();
-                    disabledButton(true);
+                    disabledButton(true,"delete");
+
+                    popupMsg("Data successfuly deleted!");
                 }
             });
         }
@@ -333,8 +346,9 @@ $(document).ready(function(){
                     $(".tb_warehouse").DataTable().ajax.reload();
                     $("#formItemList").modal("hide");
                     disabledButton(true);
-                    $("#alertOK").modal("show");
-                    document.getElementById("alertMsg").innerHTML = "Data successfuly added!";
+                    $("#myform").trigger("reset");
+                    disabledInput(true);
+                    popupMsg("Data successfuly added!");
                 }
             }
         });
@@ -362,6 +376,13 @@ $(document).ready(function(){
         });
         
     });
+
+    function popupMsg(msg){
+        setTimeout(function(){
+            $("#alertOK").modal("show");
+            document.getElementById("alertMsg").innerHTML = msg;
+        },500);
+    }
 
 });
 </script>

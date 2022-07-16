@@ -6,22 +6,34 @@ body {
     background-image: linear-gradient(#b1ccea, #98b8df, #638dc9);
 }
 
-.dropdown-menu{
-    background-color:#fafafa; box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-    border: 1px solid #9d9d9d;
-}
+    /*Start navbar */
 
-.dropdown-menu a{
-    font-size:13px;
-    color:#242426;
-    border:1px solid transparent;
-}
+    .navbar{
+        background-image: linear-gradient(#c7d9ed, #b4c7e7, #c7d9ed); border-bottom: 1px solid #577fb3; padding-top:0.45rem; padding-bottom:0.45rem;
+    }
 
-.dropdown-menu a:hover{
-    border:1px solid #e0d5a7;
-    background: linear-gradient(to top, #fce8aa 10%, #f3ce61 40%, #ffe88e 60%,#fef7d5 100%);
-    border-radius: 5px;
-}
+    .navbar #navbarDropdown{
+        color:#0a4293; font-size:14px; font-weight:600;
+    }
+
+    .dropdown-menu{
+        background-color:#fafafa; box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        border: 1px solid #9d9d9d;
+    }
+
+    .dropdown-menu a{
+        font-size:13px;
+        color:#242426;
+        border:1px solid transparent;
+    }
+
+    .dropdown-menu a:hover{
+        border:1px solid #e0d5a7;
+        background: linear-gradient(to top, #fce8aa 10%, #f3ce61 40%, #ffe88e 60%,#fef7d5 100%);
+        border-radius: 5px;
+    }
+
+    /*End navbar*/
     
     /* Start table section */
 
@@ -56,6 +68,14 @@ body {
         width: 1px;
     }
 
+    table thead tr td:first-child {
+        background-color: #a9c4e8;;
+    }
+
+    .slider table tr td:first-child {
+        text-align:right;
+    }
+
     table thead tr td {
         font-weight:600;
     }
@@ -63,6 +83,11 @@ body {
     table.dataTable tbody tr.selected {
         background: linear-gradient(to top, #fce8aa 10%, #f3ce61 40%, #ffe88e 60%,#fef7d5 100%);
         border:1px solid #8d939d;
+    }
+
+    td.numbering {
+        background: #e4ecf8;
+        text-align:center;
     }
 
     #selected_row tr{
@@ -81,6 +106,61 @@ body {
     }
 
     /* End table section */
+
+    /* Start login section */
+
+    .form-control {
+        box-shadow: none !important;
+        border: transparent;
+    }
+
+    .form-control, .btn {        
+        border-radius: 2px;
+    }
+    .login-form {
+        border: 2px solid #e8c248;
+        border-radius: 25px;
+        background-image: linear-gradient(#557cb1, #557cb1);
+        left:50%;
+        width: 500px;
+        position: absolute;
+        top: 25%;
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+    
+    .login-form form {
+        color: white;
+        border-radius: 3px;
+        padding: 30px;
+    }
+    .login-form .btn {        
+        font-size: 16px;
+        font-weight: bold;
+        background: #3598dc;
+        border: none;
+        outline: none !important;
+    }
+    .login-form .btn:hover, .login-form .btn:focus {
+        background: #2389cd;
+    }
+    .login-form a {
+        
+        color: #fff;
+        text-decoration: underline;
+    }
+    .login-form a:hover {
+        text-decoration: none;
+    }
+    .login-form form a {
+        color: #7a7a7a;
+        text-decoration: none;
+    }
+    .login-form form a:hover {
+        text-decoration: underline;
+    }
+
+    /* End login section*/
 
     /* Start footer section  */
     .footer {

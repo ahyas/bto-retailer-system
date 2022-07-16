@@ -69,5 +69,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get("crud/table_layout3","TableLayout3Controller@index")->name("crud.table_layout3");
 
     Route::get("crud/table_layout4","TableLayout4Controller@index")->name("crud.table_layout4");
+
+    Route::get("crud/table_layout5","TableLayout5Controller@index")->name("crud.table_layout5");
    
 });
