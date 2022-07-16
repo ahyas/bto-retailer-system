@@ -349,8 +349,6 @@ $(document).ready(function(){
     });
 
     $("#updateBtn").click(function(e){
-        console.log($("#myform").serialize());
-
         e.preventDefault();
         $.ajax({
             type        : "POST",

@@ -126,9 +126,7 @@ $(document).ready(function(){
     var table = $(".tb_warehouse").DataTable({
         ajax            : "{{route('crud.table_layout1.show_data')}}",
         processing      : false,
-        bResetDisplay   : false,
         ordering        : false,
-        bPaginate       : true,
         columnDefs: [
             {
                 searchable: false,
