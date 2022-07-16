@@ -9,17 +9,13 @@ use DataTables;
 class TableLayout3Controller extends Controller
 {
     public function index(){
-        $tb_jenis=DB::table("tb_jenis")
-        ->select("kode","keterangan")
+        $tb_category=DB::table("tb_category")
+        ->select("code","name")
         ->get();
 
-        $satuan=DB::table("tb_ref_satuan")->select("nama AS satuan","id")->get();
-
-        $tb_kategori=DB::table("tb_kategori")
-        ->select("kode","keterangan")
-        ->get();
+        $unit=DB::table("tb_ref_unit")->select("name AS unit","id")->get();
         
-        return view("crud/table_layout3/index", compact("tb_jenis","tb_kategori","satuan"));
+        return view("crud/table_layout3/index", compact("tb_category","unit"));;
     }
     
 }

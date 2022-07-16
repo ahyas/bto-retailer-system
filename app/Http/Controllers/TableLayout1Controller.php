@@ -9,34 +9,30 @@ use DataTables;
 class TableLayout1Controller extends Controller
 {
     public function index(){
-        $tb_jenis=DB::table("tb_jenis")
-        ->select("kode","keterangan")
+        $tb_category=DB::table("tb_category")
+        ->select("code","name")
         ->get();
 
-        $satuan=DB::table("tb_ref_satuan")->select("nama AS satuan","id")->get();
-
-        $tb_kategori=DB::table("tb_kategori")
-        ->select("kode","keterangan")
-        ->get();
+        $unit=DB::table("tb_ref_unit")->select("name AS unit","id")->get();
         
-        return view("crud/table_layout1/index", compact("tb_jenis","tb_kategori","satuan"));
+        return view("crud/table_layout1/index", compact("tb_category","unit"));
     }
 
     public function show_data(){
-        $table = DB::table("tb_daftar_barang")
-        ->select("tb_jenis.kode as category","tb_kategori.kode as sub_category","tb_jenis.keterangan as jenis_barang","tb_kategori.keterangan as kategori_barang", "tb_daftar_barang.id as id_item","tb_daftar_barang.kode_barang as barcode","tb_daftar_barang.nama_barang as item", "tb_daftar_barang.nama_barang","tb_daftar_barang.stock","tb_daftar_barang.kode_jenis as category","tb_ref_satuan.nama AS unit","tb_daftar_barang.id_satuan as id_unit")
-        ->leftjoin("tb_jenis", "tb_daftar_barang.kode_jenis","=","tb_jenis.kode")
-        ->leftJoin("tb_kategori", "tb_daftar_barang.kode_kategori","=","tb_kategori.kode")
-        ->leftjoin("tb_ref_satuan","tb_daftar_barang.id_satuan","=","tb_ref_satuan.id")
-        ->orderBy("tb_daftar_barang.created_at","DESC")
+        $table = DB::table("tb_item")
+        ->select("tb_category.code as category","tb_sub_category.code as sub_category","tb_category.name as category_name","tb_sub_category.name as sub_category_name", "tb_item.id as id_item","tb_item.code as barcode","tb_item.name as item","tb_item.stock","tb_item.code_category as category","tb_ref_unit.name AS unit","tb_item.code_unit as id_unit")
+        ->leftjoin("tb_category", "tb_item.code_category","=","tb_category.code")
+        ->leftJoin("tb_sub_category", "tb_item.code_sub_category","=","tb_sub_category.code")
+        ->leftjoin("tb_ref_unit","tb_item.code_unit","=","tb_ref_unit.id")
+        ->orderBy("tb_item.created_at","DESC")
         ->get();
 
         return DataTables::of($table)->make(true);
     }
 
     public function save(Request $request){
-        $table=DB::table("tb_daftar_barang")
-        ->where("kode_barang",$request["kode_barang"])
+        $table=DB::table("tb_item")
+        ->where("code",$request["kode_barang"])
         ->count();
 
         //check if barcode has already exist
@@ -44,14 +40,14 @@ class TableLayout1Controller extends Controller
             $exist = true;
         }else{
             $exist = false;
-            DB::table("tb_daftar_barang")
+            DB::table("tb_item")
             ->insert([
-                "kode_jenis"    =>$request["category"],
-                "kode_kategori" =>$request["sub_category"],
-                "kode_barang"   =>$request["barcode"],
-                "nama_barang"   =>$request["item"],
-                "id_satuan"     =>$request["unit"],
-                "stock"         =>$request["stock"],
+                "code_category"     =>$request["category"],
+                "code_sub_category" =>$request["sub_category"],
+                "code"              =>$request["barcode"],
+                "name"              =>$request["item"],
+                "code_unit"         =>$request["unit"],
+                "stock"             =>$request["stock"],
             ]); 
 
         }
@@ -61,31 +57,31 @@ class TableLayout1Controller extends Controller
 
     public function edit(Request $request, $id){
 
-        $table = DB::table("tb_daftar_barang")
-        ->select("tb_jenis.kode as category","tb_kategori.kode as sub_category", "tb_daftar_barang.kode_barang as barcode","tb_daftar_barang.nama_barang", "tb_daftar_barang.nama_barang as item","tb_daftar_barang.stock","tb_daftar_barang.id_satuan as id_unit")
-        ->leftjoin("tb_jenis", "tb_daftar_barang.kode_jenis","=","tb_jenis.kode")
-        ->leftJoin("tb_kategori", "tb_daftar_barang.kode_kategori","=","tb_kategori.kode")
-        ->where("tb_daftar_barang.id", $id)
+        $table = DB::table("tb_item")
+        ->select("tb_category.code as category","tb_sub_category.code as sub_category", "tb_item.code as barcode", "tb_item.name as item","tb_item.stock","tb_item.code_unit as id_unit")
+        ->leftjoin("tb_category", "tb_item.code_category","=","tb_category.code")
+        ->leftJoin("tb_sub_category", "tb_item.code_sub_category","=","tb_sub_category.code")
+        ->where("tb_item.id", $id)
         ->first();
 
-        $kategori=DB::table("tb_kategori")
-        ->select("kode","keterangan")
-        ->where("kode_jenis",$request["category"])
+        $sub_category=DB::table("tb_sub_category")
+        ->select("code","name as sub_category")
+        ->where("code_category",$request["category"])
         ->get();
 
-        return response()->json(["table"=>$table, "kategori"=>$kategori]);
+        return response()->json(["table"=>$table, "sub_category"=>$sub_category]);
     }
 
     public function update(Request $request){
-        $table = DB::table("tb_daftar_barang")
+        $table = DB::table("tb_item")
         ->where("id", $request["id_item"])
         ->update([
-            "kode_jenis"    =>$request["category"],
-            "kode_kategori" =>$request["sub_category"],
-            "kode_barang"   =>$request["barcode"],
-            "nama_barang"   =>$request["item"],
-            "stock"         =>$request["stock"],
-            "id_satuan"     =>$request["unit"]
+            "code_category"     =>$request["category"],
+            "code_sub_category" =>$request["sub_category"],
+            "code"              =>$request["barcode"],
+            "name"              =>$request["item"],
+            "stock"             =>$request["stock"],
+            "code_unit"         =>$request["unit"]
         ]);
 
         return response()->json($table);
@@ -93,7 +89,7 @@ class TableLayout1Controller extends Controller
     }
 
     public function delete($id){
-        $table = DB::table("tb_daftar_barang")
+        $table = DB::table("tb_item")
         ->where("id",$id)
         ->delete();
 
@@ -101,17 +97,12 @@ class TableLayout1Controller extends Controller
     }
 
     public function kategori_barang($barcode){
-        $table=DB::table("tb_kategori")
-        ->select("kode", "keterangan")
-        ->where("kode_jenis", $barcode)
+        $table=DB::table("tb_sub_category")
+        ->select("code", "name as sub_category")
+        ->where("code_category", $barcode)
         ->get();
 
         return response()->json($table);
     }
-
-    public function test(){
-        return view("test");
-    }
-
     
 }

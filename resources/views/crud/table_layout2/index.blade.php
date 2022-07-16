@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Daftar Barang Persediaan</title>
+    <title>BtO - Warehouse</title>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
             <button class="btn btn-sm add" id="bto-button">Add</button>
             <br>
             <br>
-                <table class="tb_warehouse cell-border table-sm">
+                <table class="tb_warehouse cell-border table-sm" width="100%">
                     <thead>
                         <tr>
                             <td><i class="bi small bi-caret-down-fill" style="color:white"></i></td>
@@ -71,9 +71,9 @@
                         <div class="col-sm-10">
                             <select class="form-control form-control-sm category" id="category" name="category">
                                     <option value="0">-- Choose category --</option>
-                                @foreach($tb_jenis as $row)
-                                    <option value="{{$row->kode}}">{{$row->keterangan}}</option>
-                                @endforeach
+                                    @foreach($tb_category as $row)
+                                        <option value="{{$row->code}}">{{$row->name}}</option>
+                                    @endforeach
                             </select>
                         </div>
                     </div>
@@ -99,8 +99,8 @@
                         <div class="col-sm-10">
                             <select class="form-control form-control-sm unit" id="unit" name="unit">
                                 <option value="0">-- Choose unit --</option>
-                                @foreach($satuan as $row)
-                                <option value="{{$row->id}}">{{$row->satuan}}</option>
+                                @foreach($unit as $row)
+                                <option value="{{$row->id}}">{{$row->unit}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -124,11 +124,6 @@
 @push('scripts')
 <script type="text/javascript">
 $(document).ready(function(){
-
-    $(".sub_category").select2({
-        placeholder: "Choose category",
-    });
-
     var table = $(".tb_warehouse").DataTable({
         ajax            : "{{route('crud.table_layout1.show_data')}}",
         processing      : false,
@@ -154,8 +149,8 @@ $(document).ready(function(){
             },
             {data:"barcode", width:"100px"},
             {data:"item"},
-            {data:"jenis_barang"},
-            {data:"kategori_barang"},
+            {data:"category_name"},
+            {data:"sub_category_name"},
             {data:"stock", width:"40px", className:"dt-body-right"},
             {data:"unit"},
             {data:"id_item",
@@ -186,7 +181,7 @@ $(document).ready(function(){
                 var html;
                 html="<option value='0'>-- Choose category --</option>";
                 for(var i=0; i<data.length; i++){
-                    html+="<option value="+data[i].kode+">"+data[i].keterangan+"</option>";
+                    html+="<option value="+data[i].code+">"+data[i].sub_category+"</option>";
                 }
                 document.getElementById("sub_category").disabled=false;
                 $("#sub_category").html(html);
@@ -196,7 +191,7 @@ $(document).ready(function(){
 
 
     $("body").on("click", ".delete", function(){
-        console.log($(this).data("id_item"));
+        
         var id_item = $(this).data("id_item");
         if(confirm("Are you sure you want to delete this item?")){
             $.ajax({
@@ -261,8 +256,8 @@ $(document).ready(function(){
                 
                 var html;
                 
-                for(var i=0; i<data.kategori.length; i++){
-                    html+="<option value="+data.kategori[i].kode+">"+data.kategori[i].keterangan+"</option>";
+                for(var i=0; i<data.sub_category.length; i++){
+                    html+="<option value="+data.sub_category[i].code+">"+data.sub_category[i].sub_category+"</option>";
                 }
 
                 document.getElementById("sub_category").disabled=false;
