@@ -44,7 +44,7 @@
                         <li class="nav-item">
                             <a class="nav-link master-menu tab2" href="#"> Custom CRUD tables<i class="bi small bi-caret-down-fill"></i> </a>
                             <ul id="submenu2" class="submenu collapse">
-                                <li><a class="sub-link" href="{{route('crud.table_layout5')}}"><img src="{{asset('public/icon/icon-table2.png')}}" style="width:20px;"> Child rows</a></li>
+                                <li><a class="sub-link" href="{{route('crud.table_layout5')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Child rows</a></li>
                             </ul>
                         </li>
                     </ul>

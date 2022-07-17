@@ -19,8 +19,8 @@
             </div>
             <div class="card-body" id="card-body">
             <button class="btn btn-sm add" id="bto-button">Add</button>
-            <div style="float:right"><button class="btn btn-sm" id="bto-button">PDF</button> <button class="btn btn-sm" id="bto-button">Excel</button></div>
-            
+            <div style="float:right"><button class="btn btn-sm savePDF" id="bto-button">PDF</button> <button class="btn btn-sm saveExcel" id="bto-button">Excel</button></div>
+
             <br>
             <br>
                 <table class="tb_warehouse cell-border table-sm" width="100%">
@@ -126,6 +126,14 @@
 @push('scripts')
 <script type="text/javascript">
 $(document).ready(function(){
+    $("body").on("click",".savePDF",function(){
+        window.open("{{route('crud.table_layout1.savepdf')}}");
+    });
+
+    $("body").on("click",".saveExcel",function(){
+        window.open("{{route('crud.table_layout1.saveexcel')}}");
+    });
+
     var table = $(".tb_warehouse").DataTable({
         ajax            : "{{route('crud.table_layout1.show_data')}}",
         processing      : false,

@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use DB;
 use DataTables;
 use PDF;
+use App\Warehouse;
+ 
+use App\Exports\ExportWarehouse;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
 
 class TableLayout1Controller extends Controller
 {
@@ -40,10 +45,14 @@ class TableLayout1Controller extends Controller
         ->orderBy("tb_item.created_at","DESC")
         ->get();
 
-        $pdf=PDF::loadView('crud/table_layout1/savePDF/index', compact("table"));
+        $pdf=PDF::loadView('crud/exports/savePDF/index', compact("table"));
 
         return $pdf->setPaper('legal', 'landscape')->stream('warehouse.pdf');
     }
+
+    public function saveExcel(){
+		return Excel::download(new ExportWarehouse, 'warehouse.xlsx');
+	}
 
     public function save(Request $request){
         $table=DB::table("tb_item")
