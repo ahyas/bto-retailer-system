@@ -18,6 +18,7 @@
                 </div>
                 <div class="card-body" id="card-body">
                 <button class="btn btn-sm add" id="bto-button">Add</button>
+                <div style="float:right"><button class="btn btn-sm" id="bto-button">PDF</button> <button class="btn btn-sm" id="bto-button">Excel</button></div>
                 <br>
                 <br>
                     <table class="tb_warehouse cell-border table-sm" width="100%">

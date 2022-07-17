@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use DataTables;
+use PDF;
 
 class TableLayout1Controller extends Controller
 {
@@ -28,6 +29,20 @@ class TableLayout1Controller extends Controller
         ->get();
 
         return DataTables::of($table)->make(true);
+    }
+
+    public function savePDF(){
+        $table = DB::table("tb_item")
+        ->select("tb_category.code as category","tb_sub_category.code as sub_category","tb_category.name as category_name","tb_sub_category.name as sub_category_name", "tb_item.id as id_item","tb_item.code as barcode","tb_item.name as item","tb_item.stock","tb_item.code_category as category","tb_ref_unit.name AS unit","tb_item.code_unit as id_unit")
+        ->leftjoin("tb_category", "tb_item.code_category","=","tb_category.code")
+        ->leftJoin("tb_sub_category", "tb_item.code_sub_category","=","tb_sub_category.code")
+        ->leftjoin("tb_ref_unit","tb_item.code_unit","=","tb_ref_unit.id")
+        ->orderBy("tb_item.created_at","DESC")
+        ->get();
+
+        $pdf=PDF::loadView('crud/table_layout1/savePDF/index', compact("table"));
+
+        return $pdf->setPaper('legal', 'landscape')->stream('warehouse.pdf');
     }
 
     public function save(Request $request){

@@ -18,6 +18,7 @@
             </div>
             <div class="card-body" id="card-body">
             <button class="btn btn-sm add" id="bto-button">Add</button> <button class="btn btn-sm edit" id="bto-button">Edit</button> <button class="btn btn-sm delete" id="bto-button">Delete</button> <input type="hidden" id="id_item2"/> <input type="hidden" id="category2"/>
+            <div style="float:right"><button class="btn btn-sm" id="bto-button">PDF</button> <button class="btn btn-sm" id="bto-button">Excel</button></div>
             <br>
             <br>
                 <table class="tb_warehouse cell-border table-sm" id="selected_row" width="100%">

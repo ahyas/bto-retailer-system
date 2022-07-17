@@ -29,6 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post("crud/table_layout1/update", "TableLayout1Controller@update")->name("crud.table_layout1.update");
     Route::get("crud/table_layout1/{id}/delete", "TableLayout1Controller@delete");
     Route::get("crud/table_layout1/{kode_jenis}/kategori_barang","TableLayout1Controller@kategori_barang");
+    Route::get("crud/table_layout1/save_pdf","TableLayout1Controller@savePDF")->name("crud.table_layout1.savepdf");
 
     Route::get("crud/table_layout2", "TableLayout2Controller@index")->name("crud.table_layout2");
 
