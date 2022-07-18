@@ -126,6 +126,9 @@
 @push('scripts')
 <script type="text/javascript">
 $(document).ready(function(){
+    var success = new Audio("{{asset('public/sound/chime2.wav')}}");
+    var warning = new Audio("{{asset('public/sound/chime.wav')}}");
+
     //start input number only in barcode field
     $("input[name='barcode']").on('input', function(e) {
         $(this).val($(this).val().replace(/[^0-9]/g, ''));
@@ -315,6 +318,7 @@ $(document).ready(function(){
         setTimeout(function(){
             $("#alertOK").modal("show");
             document.getElementById("alertMsg").innerHTML = msg;
+            success.play();
         },500);
     }
 
@@ -328,30 +332,35 @@ $(document).ready(function(){
         let unit = $("#unit").val();
 
         if(barcode == ""){
+            warning.play();
             alert("Oops! Please fill out barcode");
             $("#barcode").focus();
             return false;
         }
 
         if(item == ""){
+            warning.play();
             alert("Oops! Please fill out item name");
             $("#item").focus();
             return false;
         }
 
         if(category == 0){
+            warning.play();
             alert("Oops! Please select apropriate category");
             $("#category").focus();
             return false;
         }
 
         if(sub_category == 0){
+            warning.play();
             alert("Oops! Please select apropriate sub category");
             $("#sub_category").focus();
             return false;
         }
 
         if(unit == 0){
+            warning.play();
             alert("Oops! Please select apropriate unit");
             $("#unit").focus();
             return false;
