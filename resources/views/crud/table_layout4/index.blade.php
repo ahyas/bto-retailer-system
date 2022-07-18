@@ -21,7 +21,7 @@
 
                 <button class="btn btn-sm add" id="bto-button">Add</button> <button class="btn btn-sm edit" id="bto-button">Edit</button> <button class="btn btn-sm delete" id="bto-button">Delete</button> <input type="hidden" id="id_item2"/>
 
-                <div style="float:right"><button class="btn btn-sm savePDF" id="bto-button">PDF</button> <button class="btn btn-sm saveExcel" id="bto-button">Excel</button></div>
+                <div style="float:right;">Export as <button class="btn btn-sm savePDF" id="bto-button">PDF</button> <button class="btn btn-sm saveExcel" id="bto-button">Excel</button></div>
                 <br>
                 <br>
 
@@ -113,6 +113,12 @@
 @push('scripts')
 <script type="text/javascript">
 $(document).ready(function(){
+    //start input number only in barcode field
+    $("input[name='barcode']").on('input', function(e) {
+        $(this).val($(this).val().replace(/[^0-9]/g, ''));
+    });
+    //End input number only in barcode field
+
     $("body").on("click",".savePDF",function(){
         window.open("{{route('crud.table_layout1.savepdf')}}");
     });
@@ -120,7 +126,7 @@ $(document).ready(function(){
     $("body").on("click",".saveExcel",function(){
         window.open("{{route('crud.table_layout1.saveexcel')}}");
     });
-    
+
     var tb_warehouse = $(".tb_warehouse").DataTable({
         ajax            : "{{route('crud.table_layout1.show_data')}}",
         processing      : false,
@@ -335,47 +341,50 @@ $(document).ready(function(){
 
     $("#saveBtn").click(function(e){
         e.preventDefault();
-        console.log("save");
-        $.ajax({
-            type    : "POST",
-            url     : "{{route('crud.table_layout1.save')}}",
-            data    : $("#myform").serialize(),
-            dataType: "JSON",
-            success :function(data){
-                console.log(data.exist);
-                if(data.exist==true){
-                    alert("Barcode has already inserted. Input another.");
-                    $("#barcode").focus();
-                }else{
-                    $(".tb_warehouse").DataTable().ajax.reload();
-                    $("#formItemList").modal("hide");
-                    disabledButton(true);
-                    $("#myform").trigger("reset");
-                    disabledInput(true);
-                    popupMsg("Data successfuly added!");
+        if(formValidation()!==false){
+            $.ajax({
+                type    : "POST",
+                url     : "{{route('crud.table_layout1.save')}}",
+                data    : $("#myform").serialize(),
+                dataType: "JSON",
+                success :function(data){
+                    console.log(data.exist);
+                    if(data.exist==true){
+                        alert("Barcode has already inserted. Input another.");
+                        $("#barcode").focus();
+                    }else{
+                        $(".tb_warehouse").DataTable().ajax.reload();
+                        $("#formItemList").modal("hide");
+                        disabledButton(true);
+                        $("#myform").trigger("reset");
+                        disabledInput(true);
+                        popupMsg("Data successfuly added!");
+                    }
                 }
-            }
-        });
+            });
+        }
     });
 
     $("#updateBtn").click(function(e){
         e.preventDefault();
-        $.ajax({
-            type        : "POST",
-            url         : "{{route('crud.table_layout1.update')}}",
-            dataType    : "JSON",
-            data        : $("#myform").serialize(),
-            success     : function(data){
+        if(formValidation()!==false){
+            $.ajax({
+                type        : "POST",
+                url         : "{{route('crud.table_layout1.update')}}",
+                dataType    : "JSON",
+                data        : $("#myform").serialize(),
+                success     : function(data){
 
-                $(".tb_warehouse").DataTable().ajax.reload(null, false);
-                disabledButton(true);
-                disabledInput(true);
-                $("#myform").trigger("reset");
-                $("#sub_category").val("0");
-                $("#alertOK").modal("show");
-                document.getElementById("alertMsg").innerHTML = "Data successfuly changed!";
-            }
-        });
+                    $(".tb_warehouse").DataTable().ajax.reload(null, false);
+                    disabledButton(true);
+                    disabledInput(true);
+                    $("#myform").trigger("reset");
+                    $("#sub_category").val("0");
+                    $("#alertOK").modal("show");
+                    document.getElementById("alertMsg").innerHTML = "Data successfuly changed!";
+                }
+            });
+        }
         
     });
 
@@ -384,6 +393,46 @@ $(document).ready(function(){
             $("#alertOK").modal("show");
             document.getElementById("alertMsg").innerHTML = msg;
         },1000);
+    }
+
+    function formValidation(){
+
+        let barcode =  $("#barcode").val();
+        let item =  $("#item").val();
+        let category = $("#category").val();
+        let sub_category =  $("#sub_category").val();
+        let stock = $("#stock").val();
+        let unit = $("#unit").val();
+
+        if(barcode == ""){
+            alert("Oops! Please fill out barcode");
+            $("#barcode").focus();
+            return false;
+        }
+
+        if(item == ""){
+            alert("Oops! Please fill out item name");
+            $("#item").focus();
+            return false;
+        }
+
+        if(category == 0){
+            alert("Oops! Please select apropriate category");
+            $("#category").focus();
+            return false;
+        }
+
+        if(sub_category == 0){
+            alert("Oops! Please select apropriate sub category");
+            $("#sub_category").focus();
+            return false;
+        }
+
+        if(unit == 0){
+            alert("Oops! Please select apropriate unit");
+            $("#unit").focus();
+            return false;
+        }
     }
 
 });

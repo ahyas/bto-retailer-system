@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
-    <link rel = "icon" href ="{{asset('public/logo/image.png')}}" type = "image/x-icon">
+    <link rel = "icon" href ="{{asset('public/logo/image2.png')}}" type = "image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('public/style/layout.css')}}">
     <style type="text/css">
@@ -18,11 +18,10 @@
     <div class="login-form">
         <div style="margin-left:30px; margin-top:25px;">
             
-            <img src="{{asset('public/logo/image.png')}}" style="width:120px; display: block; float:left; margin-right:25px;"/>
-
             <div style="color:white">
-                <div style="font-size:35px; font-weight:bold; line-height:40px">Back to Office<br> CRUD Panel</div>
-                <p style="font-size:18px; line-height:25px">General purpose CRUD admin panel system </p>
+            <img src="{{asset('public/logo/image.png')}}" style="width:120px; display: block; float:left; margin-right:25px; margin-bottom:25px"/>
+                <div style="font-size:35px; font-weight:bold; line-height:40px; color:#ffe88e">Back to Office<br><span style="font-size:25px"> Admin Panel v1.0</span></div>
+                <p style="font-size:20px; line-height:25px">General purpose CRUD Management System </p>
             </div>
         </div>
                 <form action="{{ route('login') }}" method="post">

@@ -1,9 +1,12 @@
-<link rel="stylesheet" href="{{asset('public/style/table.css')}}">
+<head>
+    <link rel = "icon" href ="{{asset('public/logo/image2.png')}}" type = "image/x-icon">
+    <link rel="stylesheet" href="{{asset('public/style/table.css')}}">
+</head>
 <body>
     <?php $number = 1; ?>
 <div class="header">
     <div class="logo">
-        <img src="{{asset('public/logo/image.png')}}"/>
+        <img src="{{asset('public/logo/image2.png')}}"/>
     </div>
     <h2>Warehouse Inventory List</h2>
     <h5>Back to Office CRUD Panel System</h5>

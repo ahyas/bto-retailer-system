@@ -8,7 +8,7 @@
         <title>BtO - Warehouse</title>
        
         <!-- Favicon-->
-        <link rel = "icon" href ="{{asset('public/logo/image.png')}}" type = "image/x-icon">
+        <link rel = "icon" href ="{{asset('public/logo/image2.png')}}" type = "image/x-icon">
         <!-- Core theme CSS (includes Bootstrap)-->
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">

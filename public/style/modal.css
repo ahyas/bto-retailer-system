@@ -36,6 +36,10 @@
     font-size:13px;
 }
 
+.category, .sub_category, .unit{
+    cursor:pointer;
+}
+
 .form-horizontal{
     border:1px solid #a3a6ad;
     padding-top:15px;
