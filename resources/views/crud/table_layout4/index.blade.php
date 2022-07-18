@@ -155,7 +155,16 @@ $(document).ready(function(){
                 "defaultContent": ''
             },
             {data:"barcode", width:"100px"},
-            {data:"item"},
+            {data:"item",
+                render:function(data){
+                    if(data.length > 70){
+                        data = data.substring(0,70);
+                        return data+' ...';
+                    }else{
+                        return data;
+                    }
+                }
+            },
             {data:"id_unit", visible:false},
             {data:"category", visible:false},
             {data:"sub_category", visible:false},

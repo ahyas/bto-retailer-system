@@ -164,7 +164,16 @@ $(document).ready(function(){
                 "defaultContent": ''
             },
             {data:"barcode", width:"100px"},
-            {data:"item"},
+            {data:"item",
+                render:function(data){
+                    if(data.length > 70){
+                        data = data.substring(0,70);
+                        return data+' ...';
+                    }else{
+                        return data;
+                    }
+                }
+            },
             {data:"category_name"},
             {data:"sub_category_name"},
             {data:"stock", width:"40px", className:"dt-body-right"},
