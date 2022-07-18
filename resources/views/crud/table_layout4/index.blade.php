@@ -384,7 +384,7 @@ $(document).ready(function(){
                     $("#myform").trigger("reset");
                     $("#sub_category").val("0");
                     $("#alertOK").modal("show");
-                    document.getElementById("alertMsg").innerHTML = "Data successfuly changed!";
+                    popupMsg("Data successfuly updated!");
                 }
             });
         }
@@ -393,10 +393,10 @@ $(document).ready(function(){
 
     function popupMsg(msg){
         setTimeout(function(){
+            success.play();
             $("#alertOK").modal("show");
             document.getElementById("alertMsg").innerHTML = msg;
-            success.play();
-        },1000);
+        },500);
     }
 
     function formValidation(){

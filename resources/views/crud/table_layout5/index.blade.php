@@ -362,9 +362,9 @@ $(document).ready(function(){
 
     function popupMsg(msg){
         setTimeout(function(){
+            success.play();
             $("#alertOK").modal("show");
             document.getElementById("alertMsg").innerHTML = msg;
-            success.play();
         },500);
     }
 
