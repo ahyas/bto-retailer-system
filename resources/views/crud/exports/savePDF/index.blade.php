@@ -9,7 +9,7 @@
         <img src="{{asset('public/logo/image2.png')}}"/>
     </div>
     <h2>Warehouse Inventory List</h2>
-    <h5>Back to Office CRUD Panel System</h5>
+    <h5>Powered by Back to Office CRUD Management System</h5>
     <h5><?php echo date("Y-m-d"); ?></h5>
 </div>
 <table>

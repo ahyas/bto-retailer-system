@@ -5,6 +5,18 @@
         background-attachment: fixed;
         background-image: linear-gradient(#b1ccea, #98b8df, #638dc9);
     }
+    
+    #icon-pdf{
+        content: url("../../public/logo/pdf-icon.png");
+        width: 15px;
+        display:inline-flex;
+    }
+
+    #icon-excel{
+        content: url("../../public/logo/excel-icon.png");
+        width: 15px;
+        display:inline-flex;
+    }
 
     /*Start navbar */
 

@@ -21,7 +21,7 @@
 
                 <button class="btn btn-sm add" id="bto-button">Add</button> <button class="btn btn-sm edit" id="bto-button">Edit</button> <button class="btn btn-sm delete" id="bto-button">Delete</button> <input type="hidden" id="id_item2"/>
 
-                <div style="float:right;">Export as <button class="btn btn-sm savePDF" id="bto-button">PDF</button> <button class="btn btn-sm saveExcel" id="bto-button">Excel</button></div>
+                <div style="float:right;">Export as <button class="btn btn-sm savePDF" id="bto-button"><span id="icon-pdf"></span> PDF</button> <button class="btn btn-sm saveExcel" id="bto-button"><span id="icon-excel"></span> Excel</button></div>
                 <br>
                 <br>
 

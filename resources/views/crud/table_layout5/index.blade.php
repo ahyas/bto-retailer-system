@@ -18,7 +18,7 @@
                 </div>
                 <div class="card-body" id="card-body">
                 <button class="btn btn-sm add" id="bto-button">Add</button>
-                <div style="float:right">Export as <button class="btn btn-sm savePDF" id="bto-button">PDF</button> <button class="btn btn-sm saveExcel" id="bto-button">Excel</button></div>
+                <div style="float:right">Export as <button class="btn btn-sm savePDF" id="bto-button"><span id="icon-pdf"></span> PDF</button> <button class="btn btn-sm saveExcel" id="bto-button"><span id="icon-excel"></span> Excel</button></div>
                 <br>
                 <br>
                     <table class="tb_warehouse cell-border table-sm" width="100%">

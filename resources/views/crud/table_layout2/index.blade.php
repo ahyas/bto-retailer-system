@@ -19,7 +19,7 @@
             </div>
             <div class="card-body" id="card-body">
             <button class="btn btn-sm add" id="bto-button">Add</button>
-            <div style="float:right">Export as <button class="btn btn-sm savePDF" id="bto-button">PDF</button> <button class="btn btn-sm saveExcel" id="bto-button">Excel</button></div>
+            <div style="float:right">Export as <button class="btn btn-sm savePDF" id="bto-button"><span id="icon-pdf"></span> PDF</button> <button class="btn btn-sm saveExcel" id="bto-button"><span id="icon-excel"></span> Excel</button></div>
 
             <br>
             <br>
@@ -131,7 +131,7 @@ $(document).ready(function(){
         $(this).val($(this).val().replace(/[^0-9]/g, ''));
     });
     //End input number only in barcode field
-    
+
     $("body").on("click",".savePDF",function(){
         window.open("{{route('crud.table_layout1.savepdf')}}");
     });
