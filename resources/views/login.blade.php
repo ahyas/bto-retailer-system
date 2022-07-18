@@ -20,8 +20,8 @@
             
             <div style="color:white">
             <img src="{{asset('public/logo/image.png')}}" style="width:120px; display: block; float:left; margin-right:25px; margin-bottom:25px"/>
-                <div style="font-size:35px; font-weight:bold; line-height:40px; color:#ffe88e">Back to Office<br><span style="font-size:25px"> Admin Panel v1.0</span></div>
-                <p style="font-size:20px; line-height:25px">General purpose CRUD Management System </p>
+                <div style="font-size:40px; font-weight:bold; line-height:30px; color:#ffe88e">Back to Office<br><span style="font-size:25px;"> Admin Panel v1.0</span></div>
+                <p style="font-size:20  px; line-height:25px; padding-top:10px;">General purpose CRUD Management System </p>
             </div>
         </div>
                 <form action="{{ route('login') }}" method="post">
@@ -51,22 +51,21 @@
                     @endif
                     <div class="form-group">
                         <label for=""><strong>Username :</strong></label>
-                        <input type="text" name="username" class="form-control" placeholder="Username">
+                        <input type="text" name="username" class="form-control" placeholder="Username" value="admin">
                     </div>
                     <div class="form-group">
                         <label for=""><strong>Password :</strong></label>
-                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        <input type="password" name="password" class="form-control" placeholder="Password" value="kaimana@123">
                     </div>
 
                     <button type="submit" class="btn btn-sm btn-block" id="bto-button" style="height:35px; font-weight:normal">Log In</button>
                 
                 </form>
             </div>
-     
 </div>
 
 <div class="footer">
-    <p>Copyright &copy; Back to Office CRUD Panel. All rights reserved.</p>
+    <p>Copyright &copy; Back to Office Admin Panel v1.0. All rights reserved.</p>
 </div>
 </body>
 </html>

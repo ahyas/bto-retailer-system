@@ -28,7 +28,7 @@
         <div class="d-flex" id="wrapper">
             <!-- Start sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading"><a href="{{route('home')}}">BtO CRUD Panel</a></div>
+                <div class="sidebar-heading"><a href="{{route('home')}}">BtO Admin Panel v1.0.</a></div>
                 <div class="list-group list-group-flush">
                 <nav class="sidebar">
                     <ul class="nav flex-column">
@@ -101,7 +101,7 @@
             </div>
         </div>
         <div class="footer">
-            <p>Copyright &copy; Back to Office CRUD Panel. All rights reserved.</p>
+            <p>Copyright &copy; Back to Office Admin Panel v1.0. All rights reserved.</p>
         </div>
     </body>
 </html>
