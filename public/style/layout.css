@@ -151,6 +151,11 @@
         border-radius: 2px;
     }
 
+    .control-label:after {
+        content:"*";
+        color:red;
+    }
+
     .login-form {
         border-radius: 25px;
         background-image: linear-gradient(#557cb1, #557cb1);

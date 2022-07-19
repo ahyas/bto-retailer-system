@@ -52,22 +52,22 @@
                     {{csrf_field()}} {{method_field('POST')}}
                     <input type="hidden" class="form-control form-control-sm id_item" id="id_item" name="id_item" >
 
-                    <div class="form-group">
-                        <label style="padding-top: 0" class="col-sm-6 control-label">Barcode</label>
+                    <div class="form-group required">
+                        <label style="padding-top: 0" class="col-sm-6 control-label">Barcode </label>
                         <div class="col-sm-10" >
                             <input type="text" class="form-control form-control-sm barcode" id="barcode" name="barcode" >
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group required">
                         <label style="padding-top: 0" class="col-sm-6 control-label">Item </label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control form-control-sm item" id="item" name="item" >
                         </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label style="padding-top: 0" class="col-sm-6 control-label">Category</label>
+                    <div class="form-group required">
+                        <label style="padding-top: 0" class="col-sm-6 control-label">Category </label>
                         <div class="col-sm-10">
                             <select class="form-control form-control-sm category" id="category" name="category">
                                     <option value="0">-- Choose category --</option>
@@ -78,8 +78,8 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label style="padding-top: 0" class="col-sm-6 control-label">Sub category</label>
+                    <div class="form-group required">
+                        <label style="padding-top: 0" class="col-sm-6 control-label">Sub category </label>
                         <div class="col-sm-10">
                             <select class="form-control form-control-sm sub_category" id="sub_category" name="sub_category" disabled="true">
                                     <option value="0">-- Choose sub category --</option>
@@ -87,14 +87,14 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group required">
                         <label style="padding-top: 0" class="col-sm-6 control-label">Stock </label>
                         <div class="col-sm-5">
                             <input type="number" class="form-control form-control-sm stock" id="stock" name="stock" value="0" >
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group required">
                         <label style="padding-top: 0" class="col-sm-6 control-label">Unit </label>
                         <div class="col-sm-10">
                             <select class="form-control form-control-sm unit" id="unit" name="unit">

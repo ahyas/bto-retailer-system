@@ -31,12 +31,12 @@
 
                     <div class="form-group row">
                         <div class="col-sm-4" >
-                            <label for="barcode">Barcode</label>
+                            <label for="barcode" class="control-label">Barcode </label>
                             <input type="text" class="form-control form-control-sm barcode" id="barcode" name="barcode" readonly>
                         </div>
 
                         <div class="col-sm-4">
-                            <label for="category">Category</label>
+                            <label for="category" class="control-label">Category </label>
                             <select class="form-control form-control-sm category" id="category" name="category" disabled="true">
                                     <option value="0">-- Choose category --</option>
                                     @foreach($tb_category as $row)
@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="col-sm-4">
-                            <label for="sub_category">Sub category</label>
+                            <label for="sub_category" class="control-label">Sub category </label>
                             <select class="form-control form-control-sm sub_category" id="sub_category" name="sub_category" disabled="true">
                                 <option value="0">-- Choose sub category --</option>
                             </select>
@@ -55,19 +55,19 @@
 
                     <div class="form-group row">
                         <div class="col-sm-8" >
-                            <label for="item">Item </label>
+                            <label for="item" class="control-label">Item </label>
                             <input type="text" class="form-control form-control-sm item" id="item" name="item" readonly>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <div class="col-sm-2" >
-                            <label for="stock">Stock </label>
+                        <div class="col-sm-2" class="control-label">
+                            <label for="stock" class="control-label">Stock </label>
                             <input type="number" class="form-control form-control-sm stock" id="stock" name="stock" value="0" readonly>
                         </div>
 
                         <div class="col-sm-4" >
-                            <label for="unit">Unit </label>
+                            <label for="unit" class="control-label">Unit </label>
                             <select class="form-control form-control-sm unit" id="unit" name="unit" disabled="true">
                                 <option value="0">-- Choose unit --</option>
                                 @foreach($unit as $row)
