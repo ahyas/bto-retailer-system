@@ -24,7 +24,7 @@
                 <table class="tb_warehouse cell-border table-sm" width="100%">
                     <thead>
                         <tr>
-                            <td><i class="bi small bi-caret-down-fill"></i></td>
+                            <td></td>
                             <td>Barcode</td>
                             <td>Item</td>
                             <td>Category</td>
@@ -71,9 +71,9 @@
                         <div class="col-sm-10">
                             <select class="form-control form-control-sm category" id="category" name="category">
                                     <option value="0">-- Choose category --</option>
-                                @foreach($tb_category as $row)
-                                    <option value="{{$row->code}}">{{$row->name}}</option>
-                                @endforeach
+                                    @foreach($tb_category as $row)
+                                        <option value="{{$row->code}}">{{$row->name}}</option>
+                                    @endforeach
                             </select>
                         </div>
                     </div>
@@ -145,7 +145,7 @@ $(document).ready(function(){
     var table = $(".tb_warehouse").DataTable({
             ajax            : "{{route('crud.table_layout1.show_data')}}",
             processing      : false,
-            ordering        : false,
+            ordering        : true,
             columnDefs: [
                 {
                     searchable: false,

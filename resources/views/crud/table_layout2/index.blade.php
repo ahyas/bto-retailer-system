@@ -26,7 +26,7 @@
                 <table class="tb_warehouse cell-border table-sm" width="100%">
                     <thead>
                         <tr>
-                            <td><i class="bi small bi-caret-down-fill" style="color:white"></i></td>
+                            <td></td>
                             <td>Barcode</td>
                             <td>Item</td>
                             <td>Category</td>
@@ -146,7 +146,7 @@ $(document).ready(function(){
     var table = $(".tb_warehouse").DataTable({
         ajax            : "{{route('crud.table_layout1.show_data')}}",
         processing      : false,
-        ordering        : false,
+        ordering        : true,
         bResetDisplay   : false,
         bPaginate       : true,
         columnDefs: [
