@@ -5,7 +5,7 @@
                 <p id="alertHeading">Notification</p><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                <p><img src="{{asset('public/logo/checked.png')}}" style="margin-bottom:20px"/>&nbsp; <span id="alertMsg"></span></p>
+                <p><img src="{{asset('public/logo/checked.png')}}" style="float:left; padding-right:10px;"/><span id="alertMsg"></span></p>
                 <div class="modal-footer">
                     <button class="btn btn-sm" data-dismiss="modal" style="margin-left:auto; margin-right:auto;">OK</button>
                 </div>

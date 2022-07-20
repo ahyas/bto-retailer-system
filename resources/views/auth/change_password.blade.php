@@ -96,7 +96,7 @@
                                 $("#password").val("");
                                 $("#password").focus();
                             }else{
-                                popupMsg("Your password successfuly changed!!<br>Please re-login with your new password.");
+                                popupMsg("Your password successfuly changed! Please re-login with your new password.");
                             }
                         }
                     });
