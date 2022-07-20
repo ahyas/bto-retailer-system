@@ -39,5 +39,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get("crud/table_layout4","TableLayout4Controller@index")->name("crud.table_layout4");
 
     Route::get("crud/table_layout5","TableLayout5Controller@index")->name("crud.table_layout5");
+
+    Route::get("crud/change_password","ControllerChangePassword@index")->name("crud.change_password.index");
+    Route::post("crud/change_password/update","ControllerChangePassword@updatePassword")->name("crud.change_password.update");
    
 });

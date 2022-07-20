@@ -110,7 +110,7 @@
         cursor: pointer;
     }
 
-    #bto-button, .modal-footer button{
+    #bto-button, .modal-footer button, .form-group button{
         background: linear-gradient(to bottom, #f0f0f0 0%,#f0f0f0 50%,#d2d2d2 51%,#d2d2d2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, */
         font-size:13px; 
         height:25px;
@@ -122,7 +122,7 @@
         border:1px solid #969696;
     }
 
-    #bto-button:hover, .modal-footer button:hover{
+    #bto-button:hover, .modal-footer button:hover, .form-group button:hover{
         background: linear-gradient(to top, #fce8aa 10%, #f3ce61 40%, #ffe88e 60%,#fef7d5 100%);
     }
 

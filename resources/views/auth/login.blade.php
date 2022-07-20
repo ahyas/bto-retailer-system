@@ -51,11 +51,11 @@
                     @endif
                     <div class="form-group">
                         <label for=""><strong>Username :</strong></label>
-                        <input type="text" name="username" class="form-control" placeholder="Username" value="admin">
+                        <input type="text" name="username" class="form-control" placeholder="Username">
                     </div>
                     <div class="form-group">
                         <label for=""><strong>Password :</strong></label>
-                        <input type="password" name="password" class="form-control" placeholder="Password" value="kaimana@123">
+                        <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
 
                     <button type="submit" class="btn btn-sm btn-block" id="bto-button" style="height:35px; font-weight:normal">Log In</button>

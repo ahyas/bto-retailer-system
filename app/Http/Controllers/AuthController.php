@@ -16,7 +16,7 @@ class AuthController extends Controller
             //Login Success
             return redirect()->route('home');
         }
-        return view('login');
+        return view('auth/login');
     }
 
     public function login(Request $request)
@@ -27,9 +27,9 @@ class AuthController extends Controller
         ];
  
         $messages = [
-            'username.required'        => 'Username wajib diisi',
-            'password.required'     => 'Password wajib diisi',
-            'password.string'       => 'Password harus berupa string'
+            'username.required'        => 'Please fill in username',
+            'password.required'     => 'Please fill in password',
+            'password.string'       => 'Please fill in password'
         ];
  
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -52,98 +52,10 @@ class AuthController extends Controller
         } else { // false
  
             //Login Fail
-            Session::flash('error', 'Username atau password salah');
+            Session::flash('error', 'Username or password incorrect');
             return redirect()->route('login');
         }
  
-    }
- 
-    public function showFormRegister()
-    {
-        return view('register');
-    }
- 
-    public function register(Request $request)
-    {
-        $rules = [
-            'name'                  => 'required|min:3|max:35',
-            'username'              => 'required|unique:users',
-            'password'              => 'required|confirmed'
-        ];
- 
-        $messages = [
-            'name.required'         => 'Nama Lengkap wajib diisi',
-            'name.min'              => 'Nama lengkap minimal 3 karakter',
-            'name.max'              => 'Nama lengkap maksimal 35 karakter',
-            'username.required'     => 'Username wajib diisi',
-            'username.unique'       => 'Username sudah terdaftar',
-            'password.required'     => 'Password wajib diisi',
-            'password.confirmed'    => 'Password tidak sama dengan konfirmasi password'
-        ]; 
- 
-        $validator = Validator::make($request->all(), $rules, $messages);
- 
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator)->withInput($request->all);
-        }
-
-        $simpan=DB::table("users")
-        ->insert([
-            "name"=>ucwords(strtolower($request->name)),
-            "username"=>strtolower($request->username),
-            "password"=>Hash::make($request->password),
-        ]);
- 
-        if($simpan){
-            Session::flash('success', 'Register berhasil! Silahkan login untuk mengakses data');
-            return redirect()->route('login');
-        } else {
-            Session::flash('errors', ['' => 'Register gagal! Silahkan ulangi beberapa saat lagi']);
-            return redirect()->route('register');
-        }
-    }
-
-    public function showFormChangePassword(){
-        return view("change_password");
-    }
-
-    public function change_password(Request $request){
-        $rules = [
-            'old_password'             => 'required|min:3|max:35',
-            'new_password'             => 'required|unique:users',
-            'password_confirmation'    => 'required|confirmed'
-        ];
- 
-        $messages = [
-            'name.required'         => 'Nama Lengkap wajib diisi',
-            'name.min'              => 'Nama lengkap minimal 3 karakter',
-            'name.max'              => 'Nama lengkap maksimal 35 karakter',
-            'username.required'     => 'Username wajib diisi',
-            'username.unique'       => 'Username sudah terdaftar',
-            'password.required'     => 'Password wajib diisi',
-            'password.confirmed'    => 'Password tidak sama dengan konfirmasi password'
-        ];
-
-        $validator = Validator::make($request->all(), $rules, $messages);
- 
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator)->withInput($request->all);
-        }
-
-        $reset=DB::table("users")
-        ->update([
-            "name"=>ucwords(strtolower($request->name)),
-            "username"=>strtolower($request->username),
-            "password"=>Hash::make($request->password),
-        ]);
- 
-        if($simpan){
-            Session::flash('success', 'Register berhasil! Silahkan login untuk mengakses data');
-            return redirect()->route('login');
-        } else {
-            Session::flash('errors', ['' => 'Register gagal! Silahkan ulangi beberapa saat lagi']);
-            return redirect()->route('register');
-        }
     }
  
     public function logout()

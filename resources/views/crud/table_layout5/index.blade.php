@@ -11,35 +11,35 @@
 </head>
 
 <body>
-        <div class="col-md-12">
-            <div class="card" id="card">
-                <div class="card-header" id="card-header">
-                    <span id="header-title">Child rows</span>
-                </div>
-                <div class="card-body" id="card-body">
-                <button class="btn btn-sm add" id="bto-button">Add</button>
-                <div style="float:right">Export as <button class="btn btn-sm savePDF" id="bto-button"><span id="icon-pdf"></span> PDF</button> <button class="btn btn-sm saveExcel" id="bto-button"><span id="icon-excel"></span> Excel</button></div>
-                <br>
-                <br>
-                    <table class="tb_warehouse cell-border table-sm" width="100%">
-                        <thead>
-                            <tr>
-                                <td></td>
-                                <th></th>
-                                <td>Barcode</td>
-                                <td>Item</td>
-                                <td>Category</td>
-                                <td></td>
-                                <td>Sub category</td>
-                                <td>Stock</td>
-                                <td>Unit</td>
-                            </tr>
-                        </thead>
-                            <tbody></tbody>
-                    </table>
-                </div>
+    <div class="col-md-12">
+        <div class="card" id="card">
+            <div class="card-header" id="card-header">
+                <span id="header-title">Child rows</span>
+            </div>
+            <div class="card-body" id="card-body">
+            <button class="btn btn-sm add" id="bto-button">Add</button>
+            <div style="float:right">Export as <button class="btn btn-sm savePDF" id="bto-button"><span id="icon-pdf"></span> PDF</button> <button class="btn btn-sm saveExcel" id="bto-button"><span id="icon-excel"></span> Excel</button></div>
+            <br>
+            <br>
+                <table class="tb_warehouse cell-border table-sm" width="100%">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <th></th>
+                            <td>Barcode</td>
+                            <td>Item</td>
+                            <td>Category</td>
+                            <td></td>
+                            <td>Sub category</td>
+                            <td>Stock</td>
+                            <td>Unit</td>
+                        </tr>
+                    </thead>
+                        <tbody></tbody>
+                </table>
             </div>
         </div>
+    </div>
 
     <div class="modal fade" id="formItemList" aria-hidden="true" data-backdrop="false">
     <div class="modal-dialog modal-dialog-centered" role="document">

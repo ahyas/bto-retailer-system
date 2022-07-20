@@ -25,6 +25,7 @@
         
     </head>
     <body>
+        @if(Auth::check())
         <div class="d-flex" id="wrapper">
             <!-- Start sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
@@ -52,7 +53,7 @@
                 </div>
             </div>
             <!--End sidebar-->
-
+            @endif
             <!-- Page content wrapper-->
             <div id="page-content-wrapper">
                 <!-- Top navigation-->
@@ -61,15 +62,21 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <!-- Right Side Of Navbar -->
                             <ul class="navbar-nav ml-auto">
-                            
+                            @guest
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link"  href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                           
+                            @else
                                 <!-- Authentication Links -->
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
 
-                                    <ul class="dropdown-menu" role="menu">
+                                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
                                         <li>
+                                            <a class="dropdown-item" style="color:#0a4293; font-size:14px; background-color:#fafafa;" href="{{route('crud.change_password.index')}}">Change password</a>
                                             <a class="dropdown-item" style="color:#0a4293; font-size:14px; background-color:#fafafa;" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                                             <form id="logout-form" action="{{ route('logout') }}" method="GET" style="display: none;">
                                                 {{ csrf_field() }}
@@ -77,6 +84,7 @@
                                         </li>
                                     </ul>
                                 </li>
+                            @endguest
                             </ul>
                         </div>
 

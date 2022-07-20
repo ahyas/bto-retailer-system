@@ -12,99 +12,99 @@
 
 <body>
     
-        <div class="col-md-12">
-            <div class="card" id="card">
-                <div class="card-header" id="card-header">
-                    <span id="header-title">Integrated outside form</span>
-                </div>
-                <div class="card-body" id="card-body">
+    <div class="col-md-12">
+        <div class="card" id="card">
+            <div class="card-header" id="card-header">
+                <span id="header-title">Integrated outside form</span>
+            </div>
+            <div class="card-body" id="card-body">
 
-                <button class="btn btn-sm add" id="bto-button">Add</button> <button class="btn btn-sm edit" id="bto-button">Edit</button> <button class="btn btn-sm delete" id="bto-button">Delete</button> <input type="hidden" id="id_item2"/>
+            <button class="btn btn-sm add" id="bto-button">Add</button> <button class="btn btn-sm edit" id="bto-button">Edit</button> <button class="btn btn-sm delete" id="bto-button">Delete</button> <input type="hidden" id="id_item2"/>
 
-                <div style="float:right;">Export as <button class="btn btn-sm savePDF" id="bto-button"><span id="icon-pdf"></span> PDF</button> <button class="btn btn-sm saveExcel" id="bto-button"><span id="icon-excel"></span> Excel</button></div>
-                <br>
-                <br>
+            <div style="float:right;">Export as <button class="btn btn-sm savePDF" id="bto-button"><span id="icon-pdf"></span> PDF</button> <button class="btn btn-sm saveExcel" id="bto-button"><span id="icon-excel"></span> Excel</button></div>
+            <br>
+            <br>
 
-                <form id="myform" class="form-horizontal" style="padding-left:15px; padding-right:15px">
-                    {{csrf_field()}} {{method_field('POST')}}
-                    <input type="hidden" class="form-control form-control-sm id_item" id="id_item" name="id_item" >
+            <form id="myform" class="form-horizontal" style="padding-left:15px; padding-right:15px">
+                {{csrf_field()}} {{method_field('POST')}}
+                <input type="hidden" class="form-control form-control-sm id_item" id="id_item" name="id_item" >
 
-                    <div class="form-group row">
-                        <div class="col-sm-4" >
-                            <label for="barcode" class="control-label">Barcode </label>
-                            <input type="text" class="form-control form-control-sm barcode" id="barcode" name="barcode" readonly>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <label for="category" class="control-label">Category </label>
-                            <select class="form-control form-control-sm category" id="category" name="category" disabled="true">
-                                    <option value="0">-- Choose category --</option>
-                                    @foreach($tb_category as $row)
-                                        <option value="{{$row->code}}">{{$row->name}}</option>
-                                    @endforeach
-                            </select>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <label for="sub_category" class="control-label">Sub category </label>
-                            <select class="form-control form-control-sm sub_category" id="sub_category" name="sub_category" disabled="true">
-                                <option value="0">-- Choose sub category --</option>
-                            </select>
-                        </div>
+                <div class="form-group row">
+                    <div class="col-sm-4" >
+                        <label for="barcode" class="control-label">Barcode </label>
+                        <input type="text" class="form-control form-control-sm barcode" id="barcode" name="barcode" readonly>
                     </div>
 
-                    <div class="form-group row">
-                        <div class="col-sm-8" >
-                            <label for="item" class="control-label">Item </label>
-                            <input type="text" class="form-control form-control-sm item" id="item" name="item" readonly>
-                        </div>
-                    </div>`
-
-                    <div class="form-group row">
-                        <div class="col-sm-2" class="control-label">
-                            <label for="stock" class="control-label">Stock </label>
-                            <input type="number" class="form-control form-control-sm stock" id="stock" name="stock" value="0" readonly>
-                        </div>
-
-                        <div class="col-sm-4" >
-                            <label for="unit" class="control-label">Unit </label>
-                            <select class="form-control form-control-sm unit" id="unit" name="unit" disabled="true">
-                                <option value="0">-- Choose unit --</option>
-                                @foreach($unit as $row)
-                                <option value="{{$row->id}}">{{$row->unit}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                    <div class="col-sm-4">
+                        <label for="category" class="control-label">Category </label>
+                        <select class="form-control form-control-sm category" id="category" name="category" disabled="true">
+                            <option value="0">-- Choose category --</option>
+                            @foreach($tb_category as $row)
+                                <option value="{{$row->code}}">{{$row->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
-                </form>
-               
-                <div class="modal-footer">
-                    <button class="btn btn-sm saveBtn" id="saveBtn">Save</button>
-                    <button class="btn btn-sm updateBtn" id="updateBtn">Update</button>
-                    <button type="button" class="btn btn-sm cancelBtn" id="cancelBtn" data-dismiss="modal">Cancel</button>
+
+                    <div class="col-sm-4">
+                        <label for="sub_category" class="control-label">Sub category </label>
+                        <select class="form-control form-control-sm sub_category" id="sub_category" name="sub_category" disabled="true">
+                            <option value="0">-- Choose sub category --</option>
+                        </select>
+                    </div>
                 </div>
 
-                <br>
-                    <table class="tb_warehouse cell-border table-sm" id="selected_row" width="100%">
-                        <thead>
-                            <tr>
-                                <td><i class="bi small bi-caret-down-fill" style="color:white"></i></td>
-                                <td>Barcode</td>
-                                <td>Item</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>Category</td>
-                                <td>Sub category</td>
-                                <td>Stock</td>
-                                <td>Unit</td>
-                            </tr>
-                        </thead>
-                            <tbody></tbody>
-                    </table>
+                <div class="form-group row">
+                    <div class="col-sm-8" >
+                        <label for="item" class="control-label">Item </label>
+                        <input type="text" class="form-control form-control-sm item" id="item" name="item" readonly>
+                    </div>
+                </div>`
+
+                <div class="form-group row">
+                    <div class="col-sm-2" class="control-label">
+                        <label for="stock" class="control-label">Stock </label>
+                        <input type="number" class="form-control form-control-sm stock" id="stock" name="stock" value="0" readonly>
+                    </div>
+
+                    <div class="col-sm-4" >
+                        <label for="unit" class="control-label">Unit </label>
+                        <select class="form-control form-control-sm unit" id="unit" name="unit" disabled="true">
+                            <option value="0">-- Choose unit --</option>
+                            @foreach($unit as $row)
+                            <option value="{{$row->id}}">{{$row->unit}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
+            </form>
+            
+            <div class="modal-footer">
+                <button class="btn btn-sm saveBtn" id="saveBtn">Save</button>
+                <button class="btn btn-sm updateBtn" id="updateBtn">Update</button>
+                <button type="button" class="btn btn-sm cancelBtn" id="cancelBtn" data-dismiss="modal">Cancel</button>
+            </div>
+
+            <br>
+                <table class="tb_warehouse cell-border table-sm" id="selected_row" width="100%">
+                    <thead>
+                        <tr>
+                            <td><i class="bi small bi-caret-down-fill" style="color:white"></i></td>
+                            <td>Barcode</td>
+                            <td>Item</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Category</td>
+                            <td>Sub category</td>
+                            <td>Stock</td>
+                            <td>Unit</td>
+                        </tr>
+                    </thead>
+                        <tbody></tbody>
+                </table>
             </div>
         </div>
+    </div>
 </body>
 </html>
 @include('crud/notification/index')
