@@ -19,11 +19,12 @@
         <div style="margin-left:30px; margin-top:25px;">
             
             <div style="color:white">
-            <img src="{{asset('public/logo/image.png')}}" style="width:120px; display: block; float:left; margin-right:25px; "/>
+            <img src="{{asset('public/logo/image.png')}}" style="width:120px; display: block; float:left; margin-right:25px;"/>
                 <div style="font-size:40px; font-weight:bold; line-height:30px; color:#ffe88e">Back to Office<br><span style="font-size:25px;"> Admin Panel v1.0</span></div>
                 <p style="font-size:20  px; line-height:20px; padding-top:10px;">General purpose CRUD Management System </p>
             </div>
         </div>
+        <br>
             <form action="{{ route('login') }}" method="post">
             @csrf
                 @if(session('errors'))
