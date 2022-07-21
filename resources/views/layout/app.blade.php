@@ -28,7 +28,7 @@
         @if(Auth::check())
         <div class="d-flex" id="wrapper">
             <!-- Start sidebar-->
-            <div class="border-end bg-white" id="sidebar-wrapper">
+            <div id="sidebar-wrapper">
                 <div class="sidebar-heading"><a href="{{route('home')}}">BtO Admin Panel v1.0.</a></div>
                 <div class="list-group list-group-flush">
                 <nav class="sidebar">

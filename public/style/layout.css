@@ -21,11 +21,15 @@
     /*Start navbar */
 
     .navbar{
-        background-image: linear-gradient(#c7d9ed, #b4c7e7, #c7d9ed); border-bottom: 1px solid #577fb3; padding-top:0.45rem; padding-bottom:0.45rem;
+        background-image: linear-gradient(#c7d9ed, #b4c7e7, #c7d9ed); 
+        border-bottom: 1px solid #577fb3; 
+        padding-top:0.45rem; padding-bottom:0.45rem;
     }
 
     .navbar #navbarDropdown{
-        color:#0a4293; font-size:14px; font-weight:600;
+        color:#0a4293; 
+        font-size:14px; 
+        font-weight:600;
     }
 
     .dropdown-menu{
