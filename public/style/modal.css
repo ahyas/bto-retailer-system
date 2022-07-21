@@ -36,8 +36,21 @@
     font-size:13px;
 }
 
+.modal .container2{
+    width:100%;
+	height:auto;
+    margin-bottom:30px;
+	padding:1%;
+}
+
+.modal .iconDetails {
+    float:left;
+    height:40px;
+    width:40px;	
+}
+
 .modal #alertMsg{
-    line-height:15px;
+    float:left;
 }
 
 .category, .sub_category, .unit{
@@ -59,8 +72,6 @@
 .form-group input{
     border-color:#bcbec2;
 }
-
-
 
 .modal-footer{
     margin-bottom:0;
