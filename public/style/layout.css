@@ -16,7 +16,7 @@
         content: url("../../public/logo/excel-icon.png");
         width: 15px;
         display:inline-flex;
-    }
+    } 
 
     /*Start navbar */
 
@@ -28,7 +28,7 @@
 
     .navbar #navbarDropdown{
         color:#0a4293; 
-        font-size:14px; 
+        font-size:12px; 
         font-weight:600;
     }
 
@@ -38,7 +38,7 @@
     }
 
     .dropdown-menu a{
-        font-size:13px;
+        font-size:12px;
         color:#242426;
         border:1px solid transparent;
     }
@@ -59,7 +59,7 @@
     }
 
     #card-header{
-        background-image: linear-gradient(#d0e2f8, #e2ecfb); height: 30px; line-height: 6px; font-size: 13px; border-top: 1px white solid
+        background-image: linear-gradient(#d0e2f8, #e2ecfb); height: 30px; line-height: 6px; font-size: 12px; border-top: 1px white solid
     }
 
     #header-title{
@@ -67,11 +67,12 @@
     }
 
     #card-body{
-        background-color:#f0f0f0; font-size:13px;
+        background-color:#f0f0f0; font-size:12px;
     }
 
     table{
-        font-size:13px; border:1px solid #b0c3d7; width:100%;
+        font-size:12px; 
+        border:1px solid #b0c3d7; width:100%;
     }
 
     table thead {
@@ -116,7 +117,7 @@
 
     #bto-button, .modal-footer button, .form-group button{
         background: linear-gradient(to bottom, #f0f0f0 0%,#f0f0f0 50%,#d2d2d2 51%,#d2d2d2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, */
-        font-size:13px; 
+        font-size:12px; 
         height:25px;
         padding-top:auto;
         padding-bottom: auto;
@@ -213,7 +214,7 @@
         bottom: 0;
         width: 100%;
         padding-top:5px;
-        font-size:14px;
+        font-size:12px;
         height:30px;
         background-color: #bfdbff;
         color: #0a4293;
