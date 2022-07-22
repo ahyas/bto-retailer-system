@@ -58,7 +58,7 @@
                         <label for="item" class="control-label">Item </label>
                         <input type="text" class="form-control form-control-sm item" id="item" name="item" readonly>
                     </div>
-                </div>`
+                </div>
 
                 <div class="form-group row">
                     <div class="col-sm-2" class="control-label">
