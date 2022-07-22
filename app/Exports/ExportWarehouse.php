@@ -17,7 +17,7 @@ class ExportWarehouse implements FromCollection, WithHeadings, WithEvents
     public function collection()
     {
         $table = DB::table("tb_item")
-        ->select("tb_item.code as barcode","tb_item.name as item","tb_category.name as category_name","tb_sub_category.name as sub_category_name","tb_item.stock","tb_ref_unit.name AS unit")
+        ->select("tb_item.code as barcode","tb_item.name as item","tb_category.name as category_name","tb_sub_category.name as sub_category_name",DB::raw("FORMAT(tb_item.stock, 0)"),"tb_ref_unit.name AS unit")
         ->leftjoin("tb_category", "tb_item.code_category","=","tb_category.code")
         ->leftJoin("tb_sub_category", "tb_item.code_sub_category","=","tb_sub_category.code")
         ->leftjoin("tb_ref_unit","tb_item.code_unit","=","tb_ref_unit.id")
