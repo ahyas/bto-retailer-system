@@ -18,10 +18,10 @@
     <div class="login-form">
         <div style="margin-left:30px; margin-top:25px;">
             
-            <div style="color:white; margin-bottom:30px">
+            <div style="color:white; margin-bottom:25px">
             <img src="{{asset('public/logo/image.png')}}" style="width:120px; display: block; float:left; margin-right:25px;"/>
-                <div style="font-size:40px; font-weight:bold; line-height:30px; color:#ffe88e">Back to Office<br><span style="font-size:25px;"> Admin Panel v1.0</span></div>
-                <p style="font-size:20  px; line-height:20px; padding-top:10px; padding-right:25px">General purpose CRUD Management System </p>
+                <div style="font-size:35px; font-weight:bold; line-height:30px; color:#ffe88e">Back to Office<br><span style="font-size:20px;"> Admin Panel v1.0</span></div>
+                <p style="font-size:18  px; line-height:20px; padding-top:10px; padding-right:25px">General purpose CRUD Management System </p>
             </div>
         </div>
             <form action="{{ route('login') }}" method="post">
