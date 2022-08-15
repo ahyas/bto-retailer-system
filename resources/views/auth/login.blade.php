@@ -16,12 +16,12 @@
 
 <div class="wrapper">
     <div class="login-form">
-        <div style="margin-left:30px; margin-top:25px;">
+        <div style="margin-left:30px; margin-top:30px;">
             
-            <div style="color:white; margin-bottom:25px">
+            <div style="color:white; margin-bottom:30px">
             <img src="{{asset('public/logo/image.png')}}" style="width:120px; display: block; float:left; margin-right:25px;"/>
-                <div style="font-size:35px; font-weight:bold; line-height:30px; color:#ffe88e">Back to Office<br><span style="font-size:20px;"> Admin Panel v1.0</span></div>
-                <p style="font-size:18  px; line-height:20px; padding-top:10px; padding-right:25px">General purpose CRUD Management System </p>
+                <div style="font-size:28px; font-weight:bold; line-height:25px; color:#ffe88e">Back to Office<br><span style="font-size:20px;"> Retailer System v1.0.</span></div>
+                <p style="font-size:15px; line-height:20px; padding-top:10px; padding-right:25px">Simple POS Management System for Retail Business</p>
             </div>
         </div>
             <form action="{{ route('login') }}" method="post">

@@ -29,23 +29,35 @@
         <div class="d-flex" id="wrapper">
             <!-- Start sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading"><a href="{{route('home')}}">BtO Admin Panel v1.0.</a></div>
+                <div class="sidebar-heading"><a href="{{route('home')}}">BtO Retailer System v1.0.</a></div>
                 <div class="list-group list-group-flush">
                 <nav class="sidebar">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link master-menu tab1" href="#"> Standard CRUD tables <i class="bi small bi-caret-down-fill"></i> </a>
-                            <ul id="submenu1" class="submenu collapse">
-                                <li><a class="sub-link" href="{{route('crud.table_layout1')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Basic layout</a></li>
-                                <li><a class="sub-link" href="{{route('crud.table_layout2')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Grouped action button</a></li>
-                                <li><a class="sub-link" href="{{route('crud.table_layout3')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Selected row</a> </li>
-                                <li><a class="sub-link" href="{{route('crud.table_layout4')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Integrated outside form</a> </li>
+                            <a class="nav-link master-menu tab3" href="#"> Master Data<i class="bi small bi-caret-down-fill"></i> </a>
+                            <ul id="submenu3" class="submenu collapse">
+                                <li><a class="sub-link" href="{{route('master_data.category.index')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Category</a></li>
+                                <li><a class="sub-link" href="{{route('master_data.product.index')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Product</a></li>
+                                <li><a class="sub-link" href="{{route('master_data.customer.index')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Customer</a></li>
+                                <li><a class="sub-link" href="{{route('master_data.supplier.index')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Supplier</a></li>
+                                <li><a class="sub-link" href=""><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Import product</a></li>
+                                <li><a class="sub-link" href=""><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Import customer</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link master-menu tab2" href="#"> Custom CRUD tables<i class="bi small bi-caret-down-fill"></i> </a>
-                            <ul id="submenu2" class="submenu collapse">
-                                <li><a class="sub-link" href="{{route('crud.table_layout5')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Child rows</a></li>
+                            <a class="nav-link master-menu tab4" href="#"> Transactions<i class="bi small bi-caret-down-fill"></i> </a>
+                            <ul id="submenu4" class="submenu collapse">
+                                <li><a class="sub-link" href="{{route('transaction.purchase_item.index')}}"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Purchase item</a></li>
+                                <li><a class="sub-link" href="#"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Issue item</a></li>
+                                <li><a class="sub-link" href="#"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Return item</a></li>
+                                <li><a class="sub-link" href="#"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> POS</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link master-menu tab5" href="#"> Settings<i class="bi small bi-caret-down-fill"></i> </a>
+                            <ul id="submenu5" class="submenu collapse">
+                                <li><a class="sub-link" href="#"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> Store Information</a></li>
+                                <li><a class="sub-link" href="#"><img src="{{asset('public/icon/icon-table.png')}}" style="width:20px;"> General setting</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -95,10 +107,9 @@
                 @yield('content')
         
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-                <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
                 <!-- DataTables -->
                 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
                 <!-- Bootstrap JavaScript -->
                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
                
@@ -109,7 +120,7 @@
             </div>
         </div>
         <div class="footer">
-            <p>Copyright &copy; Back to Office Admin Panel v1.0. All rights reserved.</p>
+            <p>Copyright &copy; Back to Office Retailer System v1.0. All rights reserved.</p>
         </div>
     </body>
 </html>
